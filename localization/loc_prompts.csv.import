@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://localization/loc_prompts.en.translation", "res://localization/loc_prompts.ru.translation", "res://localization/loc_prompts.uk.translation" ]
+
+source_file="res://localization/loc_prompts.csv"
+dest_files=[ "res://localization/loc_prompts.en.translation", "res://localization/loc_prompts.ru.translation", "res://localization/loc_prompts.uk.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

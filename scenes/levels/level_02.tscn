@@ -1,0 +1,1008 @@
+[gd_scene load_steps=43 format=2]
+
+[ext_resource path="res://scenes/objects/obj_player_nightmare.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/tiles/tileset_nightmare.tres" type="TileSet" id=2]
+[ext_resource path="res://scripts/level/follow_camera.gd" type="Script" id=3]
+[ext_resource path="res://scenes/objects/obj_door_side.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/objects/obj_door_backward.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sounds/snd_scare_lightbuzz.ogg" type="AudioStream" id=6]
+[ext_resource path="res://sounds/snd_safe_button.ogg" type="AudioStream" id=7]
+[ext_resource path="res://sprites/scare/spr_level02_bridge_face.png" type="Texture" id=8]
+[ext_resource path="res://sprites/objects/spr_object_booth.png" type="Texture" id=9]
+[ext_resource path="res://scenes/puzzles/puzzle_level02_caesar_hint.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scripts/gameplay/screen_interactable.gd" type="Script" id=11]
+[ext_resource path="res://sprites/misc/spr_level02_caesar_graffiti.png" type="Texture" id=12]
+[ext_resource path="res://scripts/gameplay/door.gd" type="Script" id=13]
+[ext_resource path="res://sounds/snd_obj_door_locked.ogg" type="AudioStream" id=14]
+[ext_resource path="res://scripts/level/event_sequence.gd" type="Script" id=15]
+[ext_resource path="res://scripts/level/trigger.gd" type="Script" id=16]
+[ext_resource path="res://sounds/snd_rare_toilet_jumpscare.ogg" type="AudioStream" id=17]
+[ext_resource path="res://sprites/objects/spr_object_table.png" type="Texture" id=18]
+[ext_resource path="res://scenes/objects/obj_door_forward.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scripts/gameplay/pickupable.gd" type="Script" id=20]
+[ext_resource path="res://sprites/objects/spr_object_key_white.png" type="Texture" id=21]
+[ext_resource path="res://sounds/snd_obj_pickup.ogg" type="AudioStream" id=22]
+[ext_resource path="res://sprites/objects/spr_keycode_panel.png" type="Texture" id=23]
+[ext_resource path="res://scenes/puzzles/puzzle_level02_horizon.tscn" type="PackedScene" id=24]
+[ext_resource path="res://sprites/objects/spr_object_key_red.png" type="Texture" id=25]
+[ext_resource path="res://scripts/level/conditional_event.gd" type="Script" id=26]
+[ext_resource path="res://sprites/objects/spr_object_key_yellow.png" type="Texture" id=27]
+[ext_resource path="res://sounds/mus_level02_creepy01.ogg" type="AudioStream" id=28]
+[ext_resource path="res://scenes/objects/obj_bed.tscn" type="PackedScene" id=29]
+[ext_resource path="res://scripts/story/chapter.gd" type="Script" id=30]
+[ext_resource path="res://scripts/level/music_player.gd" type="Script" id=31]
+[ext_resource path="res://sounds/snd_safe_unlock.ogg" type="AudioStream" id=32]
+[ext_resource path="res://sounds/snd_scare_screams.ogg" type="AudioStream" id=33]
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 17.5, 12 )
+
+[sub_resource type="Animation" id=10]
+resource_name = "fnl"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.3, 6.6, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.52549, 0.227451, 0.227451, 1 ), Color( 0.835294, 0.54902, 0.180392, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../CanvasLayer/Face:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.2, 6.2, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../DoorLeft")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "unnormal_door" ],
+"method": "change_linked_door"
+}, {
+"args": [  ],
+"method": "reset_linked_door"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("Cutscenes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "stop"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:value")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("../DoorRight")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "unnormal_door" ],
+"method": "change_linked_door"
+}, {
+"args": [  ],
+"method": "reset_linked_door"
+} ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("../DoorFinalKey")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "unnormal_door" ],
+"method": "change_linked_door"
+}, {
+"args": [  ],
+"method": "reset_linked_door"
+} ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("../DoorExit")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 6.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "normal_door" ],
+"method": "change_linked_door"
+} ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath("../../MusicPlayer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.3, 6.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "mus_level02_creepy01.ogg", 0.0, 0.0, 0.0 ],
+"method": "play_music"
+}, {
+"args": [ 0.0 ],
+"method": "stop_music"
+} ]
+}
+tracks/9/type = "audio"
+tracks/9/path = NodePath("../../LeftWing/MiddleRoom/MiddleRoomCutscenes/Sounds")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"clips": [ {
+"end_offset": 36.7791,
+"start_offset": 0.0,
+"stream": ExtResource( 33 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 32 )
+} ],
+"times": PoolRealArray( 2.4, 6.1 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "face"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Face:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.1, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Face:modulate")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( -0.1, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.258824 ), Color( 1, 1, 1, 0.776471 ), Color( 1, 1, 1, 0.266667 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 13.5, 15.5 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 10, 75 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 16.5, 14 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 16, 3.5 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "creepy01"
+length = 9.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 4.5, 8.6, 8.7, 9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.960784, 0, 1 ), Color( 0.517647, 0.270588, 0.270588, 1 ), Color( 0.266667, 0.121569, 0.121569, 1 ), Color( 0.517647, 0.270588, 0.270588, 1 ), Color( 0.0666667, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("MiddleRoomCutscenes/Sounds")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 6 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 7 )
+} ],
+"times": PoolRealArray( 0, 8.6 )
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("DoorRight")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "" ],
+"method": "lock"
+}, {
+"args": [  ],
+"method": "unlock"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("DoorTop")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "" ],
+"method": "lock"
+}, {
+"args": [  ],
+"method": "unlock"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("../../CreepyHall/Creepy/Enter")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "value", true ],
+"method": "set"
+} ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("../../CreepyHall/Creepy/Exit")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "value", true ],
+"method": "set"
+} ]
+}
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 13.5, 2.5 )
+
+[node name="Level02" type="Node2D"]
+
+[node name="FinalKeyRoom" type="Node2D" parent="."]
+position = Vector2( 226, -353 )
+
+[node name="Floor" type="TileMap" parent="FinalKeyRoom"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -131075, 4, 0, -131074, 4, 0, -131073, 4, 0, -196608, 4, 0, -196607, 4, 0, -196606, 4, 0, -65539, 3, 0, -65538, 2, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 3, 0, -3, 3, 0, -2, 2, 0, -1, 2, 0, -65536, 1, 0, -65535, 0, 0, -65534, 3, 0, 65533, 3, 0, 65534, 0, 0, 65535, 1, 0, 0, 2, 0, 1, 0, 0, 2, 3, 0, 131069, 3, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 3, 0, 196605, 4, 0, 196606, 4, 0, 196607, 4, 0, 131072, 4, 0, 131073, 4, 0, 131074, 4, 0 )
+
+[node name="Wall" type="TileMap" parent="FinalKeyRoom"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -262147, 44, 0, -262146, 45, 0, -262145, 45, 0, -327680, 45, 0, -327679, 45, 0, -327678, 46, 0, -196611, 50, 0, -196610, 51, 0, -196609, 51, 0, -262144, 51, 0, -262143, 51, 0, -262142, 47, 0, -131075, 54, 0, -131074, 52, 0, -131073, 52, 0, -196608, 52, 0, -196607, 52, 0, -196606, 53, 0, -65539, 23, 0, -131070, 22, 0, -3, 23, 0, -65534, 22, 0, 65533, 23, 0, 2, 22, 0, 131069, 23, 0, 65538, 22, 0, 196605, 24, 0, 196606, 25, 0, 196607, 25, 0, 131072, 25, 0, 131073, 25, 0, 131074, 26, 0 )
+
+[node name="Decor" type="TileMap" parent="FinalKeyRoom"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -262147, 55, 0, 196607, 6, 0 )
+
+[node name="YellowKey" type="Area2D" parent="FinalKeyRoom"]
+position = Vector2( -5, -112 )
+collision_layer = 2
+script = ExtResource( 20 )
+item_id = "yellow_key"
+prompt = "ITEM_YELLOW_KEY_PROMPT"
+has_item_prompt = "ITEM_HAS_YELLOW_KEY_PROMPT"
+pickup_sound = ExtResource( 22 )
+
+[node name="Sprite" type="Sprite" parent="FinalKeyRoom/YellowKey"]
+position = Vector2( 0, -2 )
+rotation = 0.785397
+texture = ExtResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinalKeyRoom/YellowKey"]
+position = Vector2( 0, -7 )
+shape = SubResource( 8 )
+
+[node name="DoorExit" parent="FinalKeyRoom" instance=ExtResource( 19 )]
+position = Vector2( -16, 90 )
+locked = false
+linked_door_path = NodePath("../../MainHall/DoorFinalKey")
+
+[node name="Camera" type="Camera2D" parent="FinalKeyRoom"]
+position = Vector2( 0, -32 )
+
+[node name="MainHall" type="Node2D" parent="."]
+modulate = Color( 0.762745, 0.613726, 0.613726, 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="MainHall"]
+layer = 16
+
+[node name="Face" type="TextureRect" parent="MainHall/CanvasLayer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -1404.0
+margin_top = -88.0
+margin_right = 790.0
+margin_bottom = 259.0
+mouse_filter = 2
+texture = ExtResource( 8 )
+stretch_mode = 6
+
+[node name="Floor" type="TileMap" parent="MainHall"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 6, 0, 0, 7, 0, 0, 8, 2, 0, 9, 2, 0, 10, 2, 0, 11, 2, 0, 12, 0, 0, 65538, 2, 0, 65539, 0, 0, 65540, 0, 0, 65541, 2, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 4, 0, 131076, 3, 0, 131077, 4, 0, 131078, 3, 0, 131079, 4, 0, 131080, 3, 0, 131081, 4, 0, 131082, 3, 0, 131083, 4, 0, 131084, 0, 0, 131085, 0, 0, 196609, 1, 0, 196610, 0, 0, 196611, 3, 0, 196612, 2, 0, 196613, 3, 0, 196614, 2, 0, 196615, 3, 0, 196616, 2, 0, 196617, 3, 0, 196618, 2, 0, 196619, 3, 0, 196620, 2, 0, 196621, 1, 0, 262145, 0, 0, 262146, 0, 0, 262147, 4, 0, 262148, 3, 0, 262149, 1, 0, 262150, 3, 0, 262151, 1, 0, 262152, 3, 0, 262153, 1, 0, 262154, 3, 0, 262155, 4, 0, 262156, 2, 0, 262157, 0, 0, 327682, 0, 0, 327683, 3, 0, 327684, 4, 0, 327685, 3, 0, 327686, 4, 0, 327687, 3, 0, 327688, 4, 0, 327689, 3, 0, 327690, 4, 0, 327691, 3, 0, 327692, 2, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 2, 0, 393222, 1, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 2, 0, 393228, 2, 0, 458762, 2, 0, 458763, 2, 0, 458764, 0, 0 )
+
+[node name="Wall" type="TileMap" parent="MainHall"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+show_collision = true
+format = 1
+tile_data = PoolIntArray( -131069, 35, 0, -131068, 45, 0, -131067, 45, 0, -131066, 36, 0, -131065, 45, 0, -131064, 45, 0, -131063, 45, 0, -131062, 45, 0, -131061, 45, 0, -131060, 46, 0, -65534, 35, 0, -65533, 38, 0, -65532, 51, 0, -65531, 51, 0, -65530, 40, 0, -65529, 51, 0, -65528, 51, 0, -65527, 51, 0, -65526, 51, 0, -65525, 51, 0, -65524, 47, 0, 1, 44, 0, 2, 38, 0, 3, 39, 0, 4, 52, 0, 5, 52, 0, 6, 41, 0, 7, 52, 0, 8, 52, 0, 9, 52, 0, 10, 52, 0, 11, 52, 0, 12, 48, 0, 13, 46, 0, 65537, 50, 0, 65538, 39, 0, 65548, 61, 0, 65549, 47, 0, 131073, 49, 0, 131084, 62, 0, 131085, 48, 0, 196609, 23, 0, 196621, 31, 0, 262145, 32, 0, 262157, 26, 0, 327682, 23, 0, 327692, 31, 0, 393218, 32, 0, 393219, 25, 0, 393220, 25, 0, 393221, 25, 0, 393222, 33, 0, 393223, 33, 0, 393224, 25, 0, 393225, 18, 0, 393228, 22, 0, 458762, 32, 0, 458763, 18, 0, 458764, 26, 0 )
+
+[node name="Decor" type="TileMap" parent="MainHall"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -131068, 55, 0, -131066, 5, 0, -131062, 55, 0, 2, 55, 0, 13, 55, 0, 65537, 7, 0, 65549, 8, 0, 458763, 6, 0 )
+
+[node name="Camera" type="Camera2D" parent="MainHall"]
+position = Vector2( 245, 104 )
+current = true
+limit_left = 0
+limit_top = -64
+limit_right = 480
+limit_bottom = 256
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 2.0
+script = ExtResource( 3 )
+node_to_follow_path = NodePath("../../YSort/Player")
+
+[node name="DoorLeft" parent="MainHall" instance=ExtResource( 4 )]
+position = Vector2( 38, 88 )
+linked_door_path = NodePath("../../CreepyHall/DoorRight")
+doors_to_change = {
+"unnormal_door": NodePath("../DoorRight")
+}
+item_prompt = "DOOR_ITEM_WHITE_KEY_PROMPT"
+has_item_prompt = "DOOR_HAS_ITEM_WHITE_KEY_PROMPT"
+needed_item = "white_key"
+
+[node name="DoorRight" parent="MainHall" instance=ExtResource( 4 )]
+position = Vector2( 442, 88 )
+locked = false
+linked_door_path = NodePath("../../RightWing/MiddleToilet/DoorLeft")
+doors_to_change = {
+"unnormal_door": NodePath("../DoorExit")
+}
+
+[node name="TpPosition" parent="MainHall/DoorRight" index="2"]
+position = Vector2( -17, 0 )
+
+[node name="DoorFinalKey" parent="MainHall" instance=ExtResource( 5 )]
+position = Vector2( 208, -27 )
+linked_door_path = NodePath("../../FinalKeyRoom/DoorExit")
+doors_to_change = {
+"unnormal_door": NodePath("../DoorRight")
+}
+item_prompt = "DOOR_ITEM_RED_KEY_PROMPT"
+has_item_prompt = "DOOR_HAS_ITEM_RED_KEY_PROMPT"
+needed_item = "red_key"
+
+[node name="DoorExit" parent="MainHall" instance=ExtResource( 19 )]
+position = Vector2( 368, 250 )
+linked_door_path = NodePath("../DoorFinalKey")
+doors_to_change = {
+"normal_door": NodePath("../../Bedroom/DoorExit")
+}
+item_prompt = "DOOR_ITEM_YELLOW_KEY_PROMPT"
+has_item_prompt = "DOOR_HAS_ITEM_YELLOW_KEY_PROMPT"
+needed_item = "yellow_key"
+
+[node name="FinalCreepy" type="Node" parent="MainHall"]
+script = ExtResource( 26 )
+value = false
+
+[node name="Cutscenes" type="AnimationPlayer" parent="MainHall/FinalCreepy"]
+anims/fnl = SubResource( 10 )
+
+[node name="Continue" type="Node" parent="MainHall/FinalCreepy"]
+script = ExtResource( 15 )
+
+[node name="CreepyHall" type="Node2D" parent="."]
+position = Vector2( 804, 620 )
+
+[node name="WallDown" type="TileMap" parent="CreepyHall"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -589829, 51, 0, -589828, 47, 0, -458760, 51, 0, -458759, 51, 0, -458758, 51, 0, -458757, 51, 0, -458756, 51, 0, -393224, 51, 0, -393223, 51, 0, -393222, 51, 0, -393221, 51, 0, -393220, 51, 0, -327688, 51, 0, -327687, 51, 0, -327686, 51, 0, -327685, 51, 0, -327684, 51, 0, -262152, 51, 0, -262151, 51, 0, -262150, 51, 0, -262149, 51, 0, -262148, 51, 0, -196616, 51, 0, -196615, 51, 0, -196614, 51, 0, -196613, 51, 0, -196612, 51, 0, -131080, 51, 0, -131079, 51, 0, -131078, 51, 0, -131077, 51, 0, -131076, 51, 0, -65544, 51, 0, -65543, 51, 0, -65542, 51, 0, -65541, 51, 0, -65540, 51, 0, -8, 51, 0, -7, 51, 0, -6, 51, 0, -5, 51, 0, -4, 51, 0, 65528, 51, 0, 65529, 51, 0, 65530, 51, 0, 65531, 51, 0, 65532, 51, 0, 131064, 51, 0, 131065, 51, 0, 131066, 51, 0, 131067, 51, 0, 131068, 51, 0, 196600, 11, 0, 196601, 52, 0, 196602, 52, 0, 196603, 52, 0, 196604, 14, 0 )
+
+[node name="Creepy" type="Node2D" parent="CreepyHall"]
+
+[node name="Face" type="Sprite" parent="CreepyHall/Creepy"]
+visible = false
+modulate = Color( 1, 1, 1, 0.258824 )
+position = Vector2( -389, -56 )
+scale = Vector2( 1.72, 1.72 )
+texture = ExtResource( 8 )
+hframes = 6
+frame = 1
+
+[node name="CreepyHallAnimation" type="AnimationPlayer" parent="CreepyHall/Creepy"]
+anims/face = SubResource( 2 )
+
+[node name="CreepySound" type="AudioStreamPlayer2D" parent="CreepyHall/Creepy"]
+position = Vector2( -179, 18 )
+stream = ExtResource( 28 )
+max_distance = 900.0
+bus = "Music"
+
+[node name="Enter" type="Node" parent="CreepyHall/Creepy"]
+script = ExtResource( 26 )
+value = false
+
+[node name="Exit" type="Node" parent="CreepyHall/Creepy"]
+script = ExtResource( 26 )
+value = false
+
+[node name="Floor" type="TileMap" parent="CreepyHall"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+show_collision = true
+format = 1
+tile_data = PoolIntArray( -458760, 4, 0, -458759, 4, 0, -458758, 4, 0, -458757, 4, 0, -458756, 4, 0, -393224, 3, 0, -393223, 0, 0, -393222, 0, 0, -393221, 0, 0, -393220, 3, 0, -327688, 3, 0, -327687, 0, 0, -327686, 0, 0, -327685, 0, 0, -327684, 3, 0, -262152, 3, 0, -262151, 0, 0, -262150, 0, 0, -262149, 0, 0, -262148, 3, 0, -196616, 3, 0, -196615, 0, 0, -196614, 0, 0, -196613, 0, 0, -196612, 3, 0, -131080, 3, 0, -131079, 0, 0, -131078, 0, 0, -131077, 0, 0, -131076, 3, 0, -65544, 3, 0, -65543, 0, 0, -65542, 0, 0, -65541, 0, 0, -65540, 3, 0, -25, 4, 0, -24, 4, 0, -23, 4, 0, -22, 4, 0, -21, 4, 0, -20, 4, 0, -19, 4, 0, -18, 4, 0, -17, 4, 0, -16, 4, 0, -15, 4, 0, -14, 4, 0, -13, 4, 0, -12, 4, 0, -11, 4, 0, -10, 4, 0, -9, 4, 0, -8, 3, 0, -7, 0, 0, -6, 0, 0, -5, 0, 0, -4, 3, 0, 65511, 3, 0, 65512, 0, 0, 65513, 0, 0, 65514, 0, 0, 65515, 0, 0, 65516, 0, 0, 65517, 0, 0, 65518, 0, 0, 65519, 0, 0, 65520, 0, 0, 65521, 0, 0, 65522, 0, 0, 65523, 0, 0, 65524, 0, 0, 65525, 0, 0, 65526, 0, 0, 65527, 0, 0, 65528, 0, 0, 65529, 0, 0, 65530, 0, 0, 65531, 0, 0, 65532, 3, 0, 131047, 3, 0, 131048, 0, 0, 131049, 0, 0, 131050, 0, 0, 131051, 0, 0, 131052, 0, 0, 131053, 0, 0, 131054, 0, 0, 131055, 0, 0, 131056, 0, 0, 131057, 0, 0, 131058, 0, 0, 131059, 0, 0, 131060, 0, 0, 131061, 0, 0, 131062, 0, 0, 131063, 0, 0, 131064, 0, 0, 131065, 0, 0, 131066, 0, 0, 131067, 0, 0, 131068, 3, 0, 196583, 3, 0, 196584, 4, 0, 196585, 4, 0, 196586, 4, 0, 196587, 4, 0, 196588, 4, 0, 196589, 4, 0, 196590, 4, 0, 196591, 4, 0, 196592, 4, 0, 196593, 4, 0, 196594, 4, 0, 196595, 4, 0, 196596, 4, 0, 196597, 4, 0, 196598, 4, 0, 196599, 4, 0, 196600, 4, 0, 196601, 4, 0, 196602, 4, 0, 196603, 4, 0, 196604, 4, 0 )
+
+[node name="Wall" type="TileMap" parent="CreepyHall"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+show_collision = true
+format = 1
+tile_data = PoolIntArray( -720904, 9, 0, -720903, 45, 0, -720902, 45, 0, -720901, 45, 0, -720900, 46, 0, -655368, 10, 0, -655367, 51, 0, -655366, 51, 0, -655365, 51, 0, -655364, 47, 0, -589850, 22, 0, -589832, 10, 0, -589831, 51, 0, -589830, 51, 0, -589829, 51, 0, -589828, 47, 0, -524314, 22, 0, -524296, 10, 0, -524295, 51, 0, -524294, 51, 0, -524293, 51, 0, -524292, 47, 0, -458778, 22, 0, -458756, 22, 0, -393242, 22, 0, -393225, 63, 0, -393220, 22, 0, -327706, 22, 0, -327689, 63, 0, -327684, 22, 0, -262170, 22, 0, -262153, 63, 0, -262148, 22, 0, -196634, 22, 0, -196617, 63, 0, -196612, 22, 0, -131098, 22, 0, -131081, 63, 0, -131076, 22, 0, -65562, 22, 0, -65561, 30, 0, -65560, 30, 0, -65559, 30, 0, -65558, 30, 0, -65557, 30, 0, -65556, 30, 0, -65555, 30, 0, -65554, 30, 0, -65553, 30, 0, -65552, 30, 0, -65551, 30, 0, -65550, 30, 0, -65549, 30, 0, -65548, 30, 0, -65547, 30, 0, -65546, 30, 0, -65545, 30, 0, -65540, 22, 0, -26, 22, 0, -25, 23, 0, -4, 22, 0, 65510, 22, 0, 65511, 23, 0, 65532, 22, 0, 131046, 22, 0, 131047, 23, 0, 131068, 22, 0, 196582, 22, 0, 196583, 23, 0, 196604, 22, 0, 262118, 22, 0, 262119, 63, 0, 262120, 63, 0, 262121, 63, 0, 262122, 63, 0, 262123, 63, 0, 262124, 63, 0, 262125, 63, 0, 262126, 63, 0, 262127, 63, 0, 262128, 63, 0, 262129, 63, 0, 262130, 63, 0, 262131, 63, 0, 262132, 63, 0, 262133, 63, 0, 262134, 63, 0, 262135, 63, 0, 262136, 63, 0, 262137, 63, 0, 262138, 63, 0, 262139, 63, 0, 262140, 63, 0, 327654, 22, 0, 393190, 22, 0, 458726, 22, 0, 524262, 22, 0, 589798, 22, 0, 655334, 22, 0, 720870, 22, 0 )
+
+[node name="Decor" type="TileMap" parent="CreepyHall"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+show_collision = true
+format = 1
+tile_data = PoolIntArray( -589850, 22, 0, -524314, 22, 0, -458778, 22, 0, -393242, 22, 0, -327706, 22, 0, -327684, 8, 0, -262170, 22, 0, -131098, 22, 0, -26, 22, 0, -25, 7, 0, 458726, 22, 0, 524262, 22, 0, 589798, 22, 0, 655334, 22, 0, 720870, 22, 0 )
+
+[node name="DoorRight" parent="CreepyHall" instance=ExtResource( 4 )]
+position = Vector2( -102, -136 )
+locked = false
+linked_door_path = NodePath("../../MainHall/DoorLeft")
+
+[node name="TpPosition" parent="CreepyHall/DoorRight" index="2"]
+position = Vector2( -33, 0 )
+
+[node name="DoorLeft" parent="CreepyHall" instance=ExtResource( 4 )]
+position = Vector2( -794, 24 )
+locked = false
+linked_door_path = NodePath("../../LeftWing/MiddleRoom/DoorRight")
+
+[node name="TpPosition" parent="CreepyHall/DoorLeft" index="2"]
+position = Vector2( 35, 1 )
+
+[node name="Camera" type="Camera2D" parent="CreepyHall"]
+position = Vector2( -187, -195 )
+limit_left = -1
+limit_top = 342
+limit_right = 708
+limit_bottom = 780
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 6.0
+script = ExtResource( 3 )
+node_to_follow_path = NodePath("../../YSort/Player")
+
+[node name="RightWing" type="Node2D" parent="."]
+position = Vector2( 1730, 116 )
+
+[node name="MiddleToilet" type="Node2D" parent="RightWing"]
+
+[node name="Floor" type="TileMap" parent="RightWing/MiddleToilet"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 131067, 0, 0, 131068, 4, 0, 131069, 0, 0, 131070, 4, 0, 131071, 0, 0, 65536, 4, 0, 65537, 0, 0, 196603, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0 )
+
+[node name="Wall" type="TileMap" parent="RightWing/MiddleToilet"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -65541, 44, 0, -65540, 9, 0, -65539, 45, 0, -65538, 45, 0, -65537, 45, 0, -131072, 45, 0, -131071, 46, 0, -5, 50, 0, -4, 10, 0, -3, 51, 0, -2, 51, 0, -1, 51, 0, -65536, 51, 0, -65535, 47, 0, 65531, 54, 0, 65532, 11, 0, 65533, 52, 0, 65534, 52, 0, 65535, 52, 0, 0, 52, 0, 1, 53, 0, 131067, 23, 0, 65537, 22, 0, 196603, 24, 0, 196604, 25, 0, 196605, 25, 0, 196606, 25, 0, 196607, 25, 0, 131072, 25, 0, 131073, 26, 0 )
+
+[node name="CaesarHint" type="Area2D" parent="RightWing/MiddleToilet"]
+position = Vector2( 46, 0 )
+collision_layer = 2
+script = ExtResource( 11 )
+screen_scene = ExtResource( 10 )
+prompt = "LEVEL2_CAESAR_HINT_PROMPT"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWing/MiddleToilet/CaesarHint"]
+position = Vector2( -0.5, -13.5 )
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="RightWing/MiddleToilet/CaesarHint"]
+position = Vector2( -3, -14 )
+texture = ExtResource( 12 )
+
+[node name="JumpscareTrigger" type="Area2D" parent="RightWing/MiddleToilet"]
+position = Vector2( -140, 32 )
+collision_layer = 0
+collision_mask = 4
+monitoring = false
+monitorable = false
+script = ExtResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWing/MiddleToilet/JumpscareTrigger"]
+position = Vector2( 0, -16 )
+shape = SubResource( 6 )
+
+[node name="Booth1" type="StaticBody2D" parent="RightWing/MiddleToilet"]
+collision_layer = 3
+script = ExtResource( 13 )
+locked = true
+locked_prompt = "CABIN_LOCKED_PROMPT"
+locked_sound = ExtResource( 14 )
+
+[node name="Sprite" type="Sprite" parent="RightWing/MiddleToilet/Booth1"]
+position = Vector2( -48, 8 )
+texture = ExtResource( 9 )
+hframes = 3
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWing/MiddleToilet/Booth1"]
+position = Vector2( -47.5, -2 )
+shape = SubResource( 4 )
+
+[node name="TpPosition" type="Node2D" parent="RightWing/MiddleToilet/Booth1"]
+
+[node name="Booth4" type="Sprite" parent="RightWing/MiddleToilet"]
+position = Vector2( -16, 8 )
+texture = ExtResource( 9 )
+hframes = 3
+
+[node name="Booth3" type="StaticBody2D" parent="RightWing/MiddleToilet"]
+position = Vector2( 16, 0 )
+collision_layer = 3
+script = ExtResource( 13 )
+locked = true
+locked_prompt = "CABIN_LOCKED_PROMPT"
+locked_sound = ExtResource( 14 )
+
+[node name="Sprite" type="Sprite" parent="RightWing/MiddleToilet/Booth3"]
+position = Vector2( 0, 8 )
+texture = ExtResource( 9 )
+hframes = 3
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWing/MiddleToilet/Booth3"]
+position = Vector2( 0, -2 )
+shape = SubResource( 4 )
+
+[node name="JumpscareSequence" type="Node" parent="RightWing/MiddleToilet/Booth3"]
+script = ExtResource( 15 )
+
+[node name="TpPosition" type="Node2D" parent="RightWing/MiddleToilet/Booth3"]
+position = Vector2( -16, 0 )
+
+[node name="JumpscareSound" type="AudioStreamPlayer" parent="RightWing/MiddleToilet"]
+stream = ExtResource( 17 )
+
+[node name="Decor" type="TileMap" parent="RightWing/MiddleToilet"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -65540, 5, 0, -65539, 55, 0, -131072, 55, 0, -5, 7, 0 )
+
+[node name="DoorLeft" parent="RightWing/MiddleToilet" instance=ExtResource( 4 )]
+position = Vector2( -154, 24 )
+locked = false
+linked_door_path = NodePath("../../../MainHall/DoorRight")
+
+[node name="TpPosition" parent="RightWing/MiddleToilet/DoorLeft" index="2"]
+position = Vector2( 21, 0 )
+
+[node name="Camera" type="Camera2D" parent="RightWing/MiddleToilet"]
+position = Vector2( -48, 20 )
+
+[node name="DoorUp" parent="RightWing/MiddleToilet" instance=ExtResource( 5 )]
+position = Vector2( -112, -27 )
+locked = false
+linked_door_path = NodePath("../../WhiteKeyRoom/ExitDoor")
+
+[node name="WhiteKeyRoom" type="Node2D" parent="RightWing"]
+position = Vector2( -111, -241 )
+
+[node name="Floor" type="TileMap" parent="RightWing/WhiteKeyRoom"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0 )
+
+[node name="Wall" type="TileMap" parent="RightWing/WhiteKeyRoom"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -65540, 44, 0, -65539, 45, 0, -65538, 45, 0, -65537, 45, 0, -131072, 45, 0, -131071, 46, 0, -4, 50, 0, -3, 51, 0, -2, 51, 0, -1, 51, 0, -65536, 51, 0, -65535, 47, 0, 65532, 54, 0, 65533, 52, 0, 65534, 52, 0, 65535, 52, 0, 0, 52, 0, 1, 53, 0, 131068, 23, 0, 65537, 22, 0, 196604, 24, 0, 196605, 25, 0, 196606, 25, 0, 196607, 25, 0, 131072, 25, 0, 131073, 26, 0 )
+
+[node name="Table" type="StaticBody2D" parent="RightWing/WhiteKeyRoom"]
+position = Vector2( -32, 5 )
+
+[node name="Sprite" type="Sprite" parent="RightWing/WhiteKeyRoom/Table"]
+texture = ExtResource( 18 )
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWing/WhiteKeyRoom/Table"]
+position = Vector2( 0, -11.5 )
+shape = SubResource( 7 )
+
+[node name="Decor" type="TileMap" parent="RightWing/WhiteKeyRoom"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -65539, 55, 0, -131072, 55, 0, 196606, 6, 0 )
+
+[node name="ExitDoor" parent="RightWing/WhiteKeyRoom" instance=ExtResource( 19 )]
+position = Vector2( -48, 90 )
+locked = false
+linked_door_path = NodePath("../../MiddleToilet/DoorUp")
+
+[node name="Camera" type="Camera2D" parent="RightWing/WhiteKeyRoom"]
+position = Vector2( -32, -2 )
+
+[node name="WhiteKey" type="Area2D" parent="RightWing/WhiteKeyRoom"]
+position = Vector2( -32, 1 )
+collision_layer = 2
+script = ExtResource( 20 )
+item_id = "white_key"
+prompt = "ITEM_WHITE_KEY_PROMPT"
+has_item_prompt = "ITEM_HAS_WHITE_KEY_PROMPT"
+pickup_sound = ExtResource( 22 )
+
+[node name="Sprite" type="Sprite" parent="RightWing/WhiteKeyRoom/WhiteKey"]
+position = Vector2( 0, -2 )
+texture = ExtResource( 21 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWing/WhiteKeyRoom/WhiteKey"]
+position = Vector2( -0.5, -2 )
+shape = SubResource( 8 )
+
+[node name="LeftWing" type="Node2D" parent="."]
+position = Vector2( -844, 645 )
+
+[node name="MiddleRoom" type="Node2D" parent="LeftWing"]
+
+[node name="Floor" type="TileMap" parent="LeftWing/MiddleRoom"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -131075, 4, 0, -131074, 4, 0, -131073, 4, 0, -196608, 4, 0, -196607, 4, 0, -196606, 4, 0, -196605, 4, 0, -65539, 3, 0, -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 1, 0, -131070, 0, 0, -131069, 3, 0, -3, 3, 0, -2, 1, 0, -1, 2, 0, -65536, 0, 0, -65535, 1, 0, -65534, 1, 0, -65533, 3, 0, 65533, 3, 0, 65534, 1, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 3, 0, 131069, 3, 0, 131070, 0, 0, 131071, 1, 0, 65536, 1, 0, 65537, 2, 0, 65538, 1, 0, 65539, 3, 0, 196605, 3, 0, 196606, 1, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 2, 0, 131075, 3, 0, 262141, 3, 0, 262142, 4, 0, 262143, 4, 0, 196608, 4, 0, 196609, 4, 0, 196610, 4, 0, 196611, 3, 0 )
+
+[node name="Wall" type="TileMap" parent="LeftWing/MiddleRoom"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -262147, 44, 0, -262146, 45, 0, -262145, 45, 0, -327680, 12, 0, -327679, 45, 0, -327678, 45, 0, -327677, 46, 0, -196611, 50, 0, -196610, 51, 0, -196609, 51, 0, -262144, 13, 0, -262143, 51, 0, -262142, 51, 0, -262141, 47, 0, -131075, 54, 0, -131074, 52, 0, -131073, 52, 0, -196608, 14, 0, -196607, 52, 0, -196606, 52, 0, -196605, 53, 0, -65539, 23, 0, -131069, 22, 0, -3, 23, 0, -65533, 22, 0, 65533, 23, 0, 3, 22, 0, 131069, 23, 0, 65539, 22, 0, 196605, 23, 0, 131075, 22, 0, 262141, 24, 0, 262142, 17, 0, 262143, 17, 0, 196608, 17, 0, 196609, 17, 0, 196610, 18, 0, 196611, 26, 0 )
+
+[node name="Decor" type="TileMap" parent="LeftWing/MiddleRoom"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -327680, 5, 0, -327678, 55, 0, -131069, 8, 0 )
+
+[node name="DoorRight" parent="LeftWing/MiddleRoom" instance=ExtResource( 4 )]
+position = Vector2( 122, -8 )
+locked = false
+linked_door_path = NodePath("../../../CreepyHall/DoorLeft")
+
+[node name="DoorTop" parent="LeftWing/MiddleRoom" instance=ExtResource( 5 )]
+position = Vector2( 16, -123 )
+locked = false
+linked_door_path = NodePath("../../UpRoom/ExitDoor")
+
+[node name="MiddleRoomCutscenes" type="AnimationPlayer" parent="LeftWing/MiddleRoom"]
+anims/creepy01 = SubResource( 1 )
+
+[node name="Sounds" type="AudioStreamPlayer" parent="LeftWing/MiddleRoom/MiddleRoomCutscenes"]
+stream = ExtResource( 32 )
+
+[node name="Camera" type="Camera2D" parent="LeftWing/MiddleRoom"]
+position = Vector2( 0, -8 )
+limit_left = -1075
+limit_top = 485
+limit_right = -595
+limit_bottom = 773
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 2.0
+script = ExtResource( 3 )
+node_to_follow_path = NodePath("../../../YSort/Player")
+
+[node name="UpRoom" type="Node2D" parent="LeftWing"]
+position = Vector2( 0, -335 )
+
+[node name="Floor" type="TileMap" parent="LeftWing/UpRoom"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -65538, 0, 0, -65537, 1, 0, -131072, 2, 0, -131071, 1, 0, -2, 1, 0, -1, 2, 0, -65536, 2, 0, -65535, 1, 0, 65534, 2, 0, 65535, 2, 0, 0, 0, 0, 1, 0, 0, 131070, 1, 0, 131071, 1, 0, 65536, 1, 0, 65537, 1, 0 )
+
+[node name="Wall" type="TileMap" parent="LeftWing/UpRoom"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -196610, 44, 0, -196609, 45, 0, -262144, 45, 0, -262143, 46, 0, -131074, 50, 0, -131073, 51, 0, -196608, 51, 0, -196607, 47, 0, -65538, 54, 0, -65537, 52, 0, -131072, 52, 0, -131071, 53, 0, -2, 23, 0, -65535, 22, 0, 65534, 23, 0, 1, 22, 0, 131070, 24, 0, 131071, 25, 0, 65536, 25, 0, 65537, 26, 0 )
+
+[node name="Decor" type="TileMap" parent="LeftWing/UpRoom"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -262144, 5, 0, -262143, 55, 0, 65536, 6, 0 )
+
+[node name="Camera" type="Camera2D" parent="LeftWing/UpRoom"]
+position = Vector2( 0, -8 )
+smoothing_speed = 2.0
+
+[node name="ExitDoor" parent="LeftWing/UpRoom" instance=ExtResource( 19 )]
+position = Vector2( 16, 58 )
+locked = false
+linked_door_path = NodePath("../../MiddleRoom/DoorTop")
+
+[node name="DoorKey" parent="LeftWing/UpRoom" instance=ExtResource( 5 )]
+position = Vector2( 16, -91 )
+linked_door_path = NodePath("../../RedKeyRoom/ExitDoor")
+locked_prompt = "DOOR_CODE_LOCKED_PROMPT"
+
+[node name="Keycode" type="Area2D" parent="LeftWing/UpRoom"]
+position = Vector2( -14, -76 )
+collision_layer = 2
+script = ExtResource( 11 )
+screen_scene = ExtResource( 24 )
+prompt = "SCREEN_UNLOCK_KEYCODE_PROMPT"
+
+[node name="Sprite" type="Sprite" parent="LeftWing/UpRoom/Keycode"]
+position = Vector2( 1, 5 )
+texture = ExtResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWing/UpRoom/Keycode"]
+position = Vector2( 0.5, -0.5 )
+shape = SubResource( 9 )
+
+[node name="RedKeyRoom" type="Node2D" parent="LeftWing"]
+position = Vector2( -346, -252 )
+
+[node name="Floor" type="TileMap" parent="LeftWing/RedKeyRoom"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0 )
+
+[node name="Wall" type="TileMap" parent="LeftWing/RedKeyRoom"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -65540, 44, 0, -65539, 45, 0, -65538, 45, 0, -65537, 45, 0, -131072, 45, 0, -131071, 46, 0, -4, 50, 0, -3, 51, 0, -2, 51, 0, -1, 51, 0, -65536, 51, 0, -65535, 47, 0, 65532, 54, 0, 65533, 52, 0, 65534, 52, 0, 65535, 52, 0, 0, 52, 0, 1, 53, 0, 131068, 23, 0, 65537, 22, 0, 196604, 24, 0, 196605, 25, 0, 196606, 25, 0, 196607, 25, 0, 131072, 25, 0, 131073, 26, 0 )
+
+[node name="Table" type="StaticBody2D" parent="LeftWing/RedKeyRoom"]
+position = Vector2( -32, 5 )
+
+[node name="Sprite" type="Sprite" parent="LeftWing/RedKeyRoom/Table"]
+texture = ExtResource( 18 )
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWing/RedKeyRoom/Table"]
+position = Vector2( 0, -11.5 )
+shape = SubResource( 7 )
+
+[node name="Decor" type="TileMap" parent="LeftWing/RedKeyRoom"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -65539, 55, 0, -131072, 55, 0, 196606, 6, 0 )
+
+[node name="ExitDoor" parent="LeftWing/RedKeyRoom" instance=ExtResource( 19 )]
+position = Vector2( -48, 90 )
+locked = false
+linked_door_path = NodePath("../../UpRoom/DoorKey")
+
+[node name="Camera" type="Camera2D" parent="LeftWing/RedKeyRoom"]
+position = Vector2( -32, -2 )
+
+[node name="RedKey" type="Area2D" parent="LeftWing/RedKeyRoom"]
+position = Vector2( -32, 1 )
+collision_layer = 2
+script = ExtResource( 20 )
+item_id = "red_key"
+prompt = "ITEM_RED_KEY_PROMPT"
+has_item_prompt = "ITEM_HAS_RED_KEY_PROMPT"
+pickup_sound = ExtResource( 22 )
+
+[node name="Sprite" type="Sprite" parent="LeftWing/RedKeyRoom/RedKey"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 0, -2 )
+texture = ExtResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWing/RedKeyRoom/RedKey"]
+position = Vector2( -0.5, -2 )
+shape = SubResource( 8 )
+
+[node name="Scare" type="Node" parent="LeftWing"]
+script = ExtResource( 26 )
+value = false
+
+[node name="ScareTimer" type="Timer" parent="LeftWing"]
+wait_time = 0.3
+one_shot = true
+
+[node name="Bedroom" type="Node2D" parent="."]
+position = Vector2( 938, -277 )
+
+[node name="Floor" type="TileMap" parent="Bedroom"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0 )
+
+[node name="Walls" type="TileMap" parent="Bedroom"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 65536, 44, 0, 65537, 45, 0, 65538, 45, 0, 65539, 45, 0, 65540, 37, 0, 131072, 50, 0, 131073, 51, 0, 131074, 51, 0, 131075, 51, 0, 131076, 42, 0, 131077, 45, 0, 131078, 37, 0, 196608, 54, 0, 196609, 52, 0, 196610, 52, 0, 196611, 52, 0, 196612, 43, 0, 196613, 51, 0, 196614, 42, 0, 262144, 23, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262149, 52, 0, 262150, 43, 0, 327680, 23, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327686, 31, 0, 393216, 24, 0, 393217, 25, 0, 393218, 25, 0, 393219, 25, 0, 393220, 25, 0, 393221, 25, 0, 393222, 26, 0 )
+
+[node name="Decor" type="TileMap" parent="Bedroom"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 131073, 55, 0, 196613, 63, 0, 196614, 8, 0 )
+
+[node name="Camera" type="Camera2D" parent="Bedroom"]
+position = Vector2( 99, 149 )
+
+[node name="DoorExit" parent="Bedroom" instance=ExtResource( 4 )]
+position = Vector2( 218, 152 )
+locked = false
+linked_door_path = NodePath("../../MainHall/DoorExit")
+
+[node name="Bed" parent="Bedroom" instance=ExtResource( 29 )]
+position = Vector2( 24, 124 )
+level = "level_lobby"
+prompt = "BED_COMPLETE_PROMPT"
+
+[node name="Sprite" parent="Bedroom/Bed" index="0"]
+frame = 1
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 245, 104 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.847059, 0.843137, 0.713726, 1 )
+
+[node name="Chapter" type="Node" parent="."]
+script = ExtResource( 30 )
+
+[node name="MusicPlayer" type="Node" parent="."]
+script = ExtResource( 31 )
+
+[connection signal="picked_up" from="FinalKeyRoom/YellowKey" to="LeftWing/Scare" method="set" flags=6 binds= [ "value", true ]]
+[connection signal="passed" from="FinalKeyRoom/DoorExit" to="FinalKeyRoom/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="MainHall/DoorLeft" to="MainHall/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="MainHall/DoorLeft" to="CreepyHall/Creepy/Exit" method="emit"]
+[connection signal="passed" from="MainHall/DoorRight" to="MainHall/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="MainHall/DoorFinalKey" to="MainHall/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="MainHall/DoorFinalKey" to="MainHall/FinalCreepy" method="emit"]
+[connection signal="unlocked" from="MainHall/DoorExit" to="MainHall/FinalCreepy" method="set" flags=6 binds= [ "value", true ]]
+[connection signal="yes" from="MainHall/FinalCreepy" to="MainHall/FinalCreepy/Cutscenes" method="play" flags=6 binds= [ "fnl" ]]
+[connection signal="yes" from="MainHall/FinalCreepy" to="MainHall/FinalCreepy/Continue" method="next"]
+[connection signal="event_3" from="MainHall/FinalCreepy/Continue" to="MainHall/FinalCreepy/Cutscenes" method="play" flags=6]
+[connection signal="yes" from="CreepyHall/Creepy/Enter" to="CreepyHall/Creepy/Face" method="set_visible" flags=6 binds= [ true ]]
+[connection signal="yes" from="CreepyHall/Creepy/Enter" to="CreepyHall/Creepy/CreepyHallAnimation" method="play" flags=6 binds= [ "face" ]]
+[connection signal="yes" from="CreepyHall/Creepy/Enter" to="CreepyHall/Creepy/CreepySound" method="play" flags=6]
+[connection signal="yes" from="CreepyHall/Creepy/Exit" to="CreepyHall/Creepy/Face" method="set_visible" flags=6 binds= [ false ]]
+[connection signal="yes" from="CreepyHall/Creepy/Exit" to="CreepyHall/Creepy/CreepyHallAnimation" method="stop" flags=6 binds= [ true ]]
+[connection signal="yes" from="CreepyHall/Creepy/Exit" to="CreepyHall/Creepy/CreepySound" method="stop" flags=6]
+[connection signal="passed" from="CreepyHall/DoorRight" to="CreepyHall/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="CreepyHall/DoorLeft" to="CreepyHall/Creepy/Enter" method="emit"]
+[connection signal="passed" from="CreepyHall/DoorLeft" to="CreepyHall/Camera" method="set" binds= [ "current", true ]]
+[connection signal="trigger_entered" from="RightWing/MiddleToilet/JumpscareTrigger" to="RightWing/MiddleToilet/JumpscareSound" method="play" flags=6]
+[connection signal="tried" from="RightWing/MiddleToilet/Booth3" to="RightWing/MiddleToilet/Booth3/JumpscareSequence" method="next"]
+[connection signal="event_4" from="RightWing/MiddleToilet/Booth3/JumpscareSequence" to="RightWing/MiddleToilet/JumpscareTrigger" method="set_monitoring" binds= [ true ]]
+[connection signal="event_5" from="RightWing/MiddleToilet/Booth3/JumpscareSequence" to="RightWing/MiddleToilet/JumpscareTrigger" method="set_monitoring" binds= [ false ]]
+[connection signal="passed" from="RightWing/MiddleToilet/DoorLeft" to="RightWing/MiddleToilet/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="RightWing/MiddleToilet/DoorUp" to="RightWing/MiddleToilet/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="RightWing/WhiteKeyRoom/ExitDoor" to="RightWing/WhiteKeyRoom/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="LeftWing/MiddleRoom/DoorRight" to="LeftWing/MiddleRoom/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="LeftWing/MiddleRoom/DoorTop" to="LeftWing/MiddleRoom/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="LeftWing/MiddleRoom/DoorTop" to="LeftWing/Scare" method="emit"]
+[connection signal="passed" from="LeftWing/UpRoom/ExitDoor" to="LeftWing/UpRoom/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="LeftWing/UpRoom/DoorKey" to="LeftWing/UpRoom/Camera" method="set" binds= [ "current", true ]]
+[connection signal="solved" from="LeftWing/UpRoom/Keycode" to="RightWing/MiddleToilet/CaesarHint" method="call_user_event_1" flags=6]
+[connection signal="solved" from="LeftWing/UpRoom/Keycode" to="LeftWing/UpRoom/DoorKey" method="unlock"]
+[connection signal="unsolved" from="LeftWing/UpRoom/Keycode" to="LeftWing/UpRoom/DoorKey" method="lock"]
+[connection signal="passed" from="LeftWing/RedKeyRoom/ExitDoor" to="LeftWing/RedKeyRoom/Camera" method="set" binds= [ "current", true ]]
+[connection signal="picked_up" from="LeftWing/RedKeyRoom/RedKey" to="LeftWing/Scare" method="set" flags=6 binds= [ "value", true ]]
+[connection signal="yes" from="LeftWing/Scare" to="LeftWing/ScareTimer" method="start" flags=6]
+[connection signal="timeout" from="LeftWing/ScareTimer" to="LeftWing/MiddleRoom/MiddleRoomCutscenes" method="play" flags=6 binds= [ "creepy01" ]]
+[connection signal="passed" from="Bedroom/DoorExit" to="Bedroom/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="Bedroom/DoorExit" to="Chapter" method="next" flags=6]
+
+[editable path="MainHall/DoorRight"]
+[editable path="CreepyHall/DoorRight"]
+[editable path="CreepyHall/DoorLeft"]
+[editable path="RightWing/MiddleToilet/DoorLeft"]
+[editable path="Bedroom/Bed"]

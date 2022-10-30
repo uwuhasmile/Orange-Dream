@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mus_lobby_normal.ogg-8691b46df5ce8e41c3a0e6ee1e7ab807.oggstr"
+
+[deps]
+
+source_file="res://sounds/mus_lobby_normal.ogg"
+dest_files=[ "res://.import/mus_lobby_normal.ogg-8691b46df5ce8e41c3a0e6ee1e7ab807.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

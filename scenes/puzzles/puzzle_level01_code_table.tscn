@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/gameplay/showable_screen.gd" type="Script" id=1]
+[ext_resource path="res://scripts/level/input_action.gd" type="Script" id=2]
+[ext_resource path="res://sprites/puzzles/spr_level01_code_table.png" type="Texture" id=3]
+[ext_resource path="res://resources/themes/theme_main.tres" type="Theme" id=4]
+
+[node name="PuzzleLevel01CodeTable" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+script = ExtResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+
+[node name="FadeRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+input_pass_on_modal_close_click = false
+color = Color( 0, 0, 0, 1 )
+
+[node name="FadeTween" type="Tween" parent="."]
+
+[node name="Enter" type="Node" parent="."]
+script = ExtResource( 2 )
+enabled = false
+
+[node name="Esc" type="Node" parent="."]
+script = ExtResource( 2 )
+enabled = false
+needed_action = "ui_cancel"
+
+[connection signal="showed_final" from="." to="Enter" method="set" binds= [ "enabled", true ]]
+[connection signal="showed_final" from="." to="Esc" method="set" binds= [ "enabled", true ]]
+[connection signal="started_hide" from="." to="Enter" method="set" binds= [ "enabled", false ]]
+[connection signal="started_hide" from="." to="Esc" method="set" binds= [ "enabled", false ]]
+[connection signal="pressed" from="Enter" to="." method="hide_screen"]
+[connection signal="just_pressed" from="Esc" to="." method="hide_screen"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/snd_scare_lightbuzz.ogg-1cdd8312a2979c0cd86c60067eb78386.oggstr"
+
+[deps]
+
+source_file="res://sounds/snd_scare_lightbuzz.ogg"
+dest_files=[ "res://.import/snd_scare_lightbuzz.ogg-1cdd8312a2979c0cd86c60067eb78386.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

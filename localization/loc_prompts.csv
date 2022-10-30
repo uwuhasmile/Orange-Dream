@@ -1,0 +1,33 @@
+id,en,ru,uk
+NONE,,,
+BED_TEST_LEVEL_PROMPT,Go to test level sleep,Пойти поспать на тестовый уровень,Піти поспати на тестовий рівень
+DOOR_OPEN_PROMPT,Open door,Открыть дверь,Відчинити двері
+DOOR_LOCKED_PROMPT,Door is locked,Дверь заперта,Двері замкнені
+DOOR_ITEM_KEY_PROMPT,Locked with key,Заперта ключом,Замкнені ключем
+DOOR_HAS_ITEM_KEY_PROMPT,Use key,Использовать ключ,Використати ключ
+DOOR_ITEM_RED_KEY_PROMPT,Locked with red key,Заперта красным ключом,Замкнені червоним ключем
+DOOR_HAS_ITEM_RED_KEY_PROMPT,Use red key,Использовать красный ключ,Використати червоний ключ
+DOOR_ITEM_WHITE_KEY_PROMPT,Locked with white key,Заперта белым ключом,Замкнені білим ключем
+DOOR_HAS_ITEM_WHITE_KEY_PROMPT,Use white key,Использовать белый ключ,Використати білий ключ
+SCREEN_LEVEL1_DESK_PROMPT,Examine the board,Осмотреть доску,Оглянути дошку
+SCREEN_LEVEL1_TABLE_PROMPT,Examine the table,Осмотреть стол,Оглянути стіл
+SCREEN_LEVEL1_SAFE_PROMPT,Examine the safe,Осмотреть сейф,Оглянути сейф
+LEVEL1_PROMPT_PICKED_RED_KEY,I picked up red key,Я подобрал красный ключ,Я підібрав червоний ключ
+BED_SLEEP_PROMPT,Sleep,Спать,Спати
+BED_COMPLETE_PROMPT,Wake up,Проснуться,Прокинутися
+DOOR_COMPLETE_1_PROMPT,I have to sleep,Мне надо поспать,Мені потрібно поспати
+DOOR_CURSE_PROMPT,I can't go there,Мне туда нельзя,Мені туди не можна
+LEVEL2_CAESAR_HINT_PROMPT,Examine the wall,Осмотреть стену,Оглянути стіну
+CABIN_LOCKED_PROMPT,Locked,Заперта,Замкнена
+ITEM_WHITE_KEY_PROMPT,Pick up white key,Подобрать белый ключ,Підібрати білий ключ
+ITEM_HAS_WHITE_KEY_PROMPT,I already have white key,У меня уже есть белый ключ,У мене вже є білий ключ
+DOOR_CODE_LOCKED_PROMPT,Locked by code,Заперто кодом,Замкнені кодом
+SCREEN_UNLOCK_KEYCODE_PROMPT,Unlock door,Открыть дверь,Відімкнути двері
+ITEM_RED_KEY_PROMPT,Pick up red key,Подобрать красный ключ,Підібрати червоний ключ
+ITEM_HAS_RED_KEY_PROMPT,I already have red key,У меня уже есть красный ключ,У мене вже є червоний ключ
+ITEM_YELLOW_KEY_PROMPT,Pick up yellow key,Подобрать красный ключ,Підібрати червоний ключ
+ITEM_HAS_YELLOW_KEY_PROMPT,I already have yellow key,У меня уже есть жёлтый ключ,У мене вже є жовтий ключ
+DOOR_ITEM_YELLOW_KEY_PROMPT,Locked with yellow key,Заперта жёлтым ключом,Замкнені жовтим ключем
+DOOR_HAS_ITEM_YELLOW_KEY_PROMPT,Use yellow key,Использовать жёлтый ключ,Використати жовтий ключ
+BED_DIE_PROMPT,Sleep forever,Заснуть навсегда,Заснути назавжди
+BED_WAKE_UP_LAST,WAKE UP,ПРОСНУТЬСЯ,ПРОКИНУТИСЯ

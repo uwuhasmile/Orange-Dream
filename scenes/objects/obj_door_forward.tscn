@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/gameplay/door.gd" type="Script" id=1]
+[ext_resource path="res://sounds/snd_obj_door_open.ogg" type="AudioStream" id=2]
+[ext_resource path="res://sounds/snd_obj_door_locked.ogg" type="AudioStream" id=3]
+[ext_resource path="res://sounds/snd_obj_door_unlock.ogg" type="AudioStream" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 1 )
+
+[node name="DoorForward" type="Area2D"]
+collision_layer = 3
+script = ExtResource( 1 )
+locked = true
+open_sound = ExtResource( 2 )
+locked_sound = ExtResource( 3 )
+lock_sound = ExtResource( 4 )
+unlock_sound = ExtResource( 4 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
+bus = "Sound"
+
+[node name="TpPosition" type="Node2D" parent="."]
+position = Vector2( 0, -14 )

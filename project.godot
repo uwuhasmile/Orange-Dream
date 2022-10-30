@@ -1,0 +1,257 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "AudioSettings",
+"language": "GDScript",
+"path": "res://scripts/level/audio_settings.gd"
+}, {
+"base": "CollisionObject2D",
+"class": "Bed",
+"language": "GDScript",
+"path": "res://scripts/gameplay/bed.gd"
+}, {
+"base": "Node",
+"class": "ChanceEvent",
+"language": "GDScript",
+"path": "res://scripts/level/chance_event.gd"
+}, {
+"base": "Node",
+"class": "Chapter",
+"language": "GDScript",
+"path": "res://scripts/story/chapter.gd"
+}, {
+"base": "Node",
+"class": "Code",
+"language": "GDScript",
+"path": "res://scripts/level/code.gd"
+}, {
+"base": "Node",
+"class": "ConditionalEvent",
+"language": "GDScript",
+"path": "res://scripts/level/conditional_event.gd"
+}, {
+"base": "TextureRect",
+"class": "CorrectTextureRect",
+"language": "GDScript",
+"path": "res://scripts/ui/correct_texture_rect.gd"
+}, {
+"base": "CollisionObject2D",
+"class": "Door",
+"language": "GDScript",
+"path": "res://scripts/gameplay/door.gd"
+}, {
+"base": "Node",
+"class": "EventSequence",
+"language": "GDScript",
+"path": "res://scripts/level/event_sequence.gd"
+}, {
+"base": "Node",
+"class": "Fade",
+"language": "GDScript",
+"path": "res://scripts/level/fade.gd"
+}, {
+"base": "Camera2D",
+"class": "FollowCamera",
+"language": "GDScript",
+"path": "res://scripts/level/follow_camera.gd"
+}, {
+"base": "Node",
+"class": "Gate",
+"language": "GDScript",
+"path": "res://scripts/level/gate.gd"
+}, {
+"base": "Control",
+"class": "HUD",
+"language": "GDScript",
+"path": "res://scripts/player/hud.gd"
+}, {
+"base": "Node",
+"class": "InputAction",
+"language": "GDScript",
+"path": "res://scripts/level/input_action.gd"
+}, {
+"base": "Node",
+"class": "LevelScript",
+"language": "GDScript",
+"path": "res://scripts/level/level_script.gd"
+}, {
+"base": "Node",
+"class": "MusicPlayer",
+"language": "GDScript",
+"path": "res://scripts/level/music_player.gd"
+}, {
+"base": "Node",
+"class": "Note",
+"language": "GDScript",
+"path": "res://scripts/story/note.gd"
+}, {
+"base": "CollisionObject2D",
+"class": "Pickupable",
+"language": "GDScript",
+"path": "res://scripts/gameplay/pickupable.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://scripts/player/player.gd"
+}, {
+"base": "AnimationTree",
+"class": "PlayerAnimations",
+"language": "GDScript",
+"path": "res://scripts/player/player_animations.gd"
+}, {
+"base": "CollisionObject2D",
+"class": "ScreenInteractable",
+"language": "GDScript",
+"path": "res://scripts/gameplay/screen_interactable.gd"
+}, {
+"base": "Control",
+"class": "ShowableScreen",
+"language": "GDScript",
+"path": "res://scripts/gameplay/showable_screen.gd"
+}, {
+"base": "Node2D",
+"class": "Teleport",
+"language": "GDScript",
+"path": "res://scripts/level/teleport.gd"
+}, {
+"base": "Area2D",
+"class": "Trigger",
+"language": "GDScript",
+"path": "res://scripts/level/trigger.gd"
+} ]
+_global_script_class_icons={
+"AudioSettings": "",
+"Bed": "",
+"ChanceEvent": "",
+"Chapter": "",
+"Code": "",
+"ConditionalEvent": "",
+"CorrectTextureRect": "",
+"Door": "",
+"EventSequence": "",
+"Fade": "",
+"FollowCamera": "",
+"Gate": "",
+"HUD": "",
+"InputAction": "",
+"LevelScript": "",
+"MusicPlayer": "",
+"Note": "",
+"Pickupable": "",
+"Player": "",
+"PlayerAnimations": "",
+"ScreenInteractable": "",
+"ShowableScreen": "",
+"Teleport": "",
+"Trigger": ""
+}
+
+[application]
+
+config/name="Orange Dream"
+run/main_scene="res://scenes/levels/level_menu.tscn"
+boot_splash/image="res://splash.png"
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
+config/icon="res://icon.png"
+
+[autoload]
+
+GlobalFade="*res://scenes/singletons/global_fade.tscn"
+GameState="*res://scripts/singleton/game_state.gd"
+GlobalStreamPlayer="*res://scenes/singletons/global_stream_player.tscn"
+GlobalMusicPlayer="*res://scenes/singletons/global_music_player.tscn"
+
+[display]
+
+window/size/width=480
+window/size/height=270
+window/size/test_width=1280
+window/size/test_height=720
+mouse_cursor/custom_image="res://sprites/ui/spr_cursor.png"
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
+[global]
+
+default_chapter=1
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+move_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+sprint={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777237,"unicode":0,"echo":false,"script":null)
+ ]
+}
+attack_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":86,"unicode":0,"echo":false,"script":null)
+ ]
+}
+attack_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":66,"unicode":0,"echo":false,"script":null)
+ ]
+}
+interact={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="default"
+2d_physics/layer_2="interactable"
+2d_physics/layer_3="player"
+
+[locale]
+
+translations=PoolStringArray( "res://localization/loc_prompts.en.translation", "res://localization/loc_prompts.ru.translation", "res://localization/loc_prompts.uk.translation", "res://localization/loc_narrative.en.translation", "res://localization/loc_narrative.ru.translation", "res://localization/loc_narrative.uk.translation", "res://localization/loc_ui.en.translation", "res://localization/loc_ui.ru.translation", "res://localization/loc_ui.uk.translation" )
+translation_remaps={
+"res://sprites/puzzles/spr_level02_caesar_hint.png": PoolStringArray( "res://sprites/puzzles/uk/spr_level02_caesar_hint.png:uk", "res://sprites/puzzles/ru/spr_level02_caesar_hint.png:ru" )
+}
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+2d/snapping/use_gpu_pixel_snap=true
+environment/default_clear_color=Color( 0, 0, 0, 1 )
+environment/default_environment="res://default_env.tres"

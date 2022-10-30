@@ -1,0 +1,370 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scenes/objects/obj_player_lobby.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/tiles/tileset_lobby.tres" type="TileSet" id=2]
+[ext_resource path="res://scenes/objects/obj_door_side.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/objects/obj_door_backward.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/level/follow_camera.gd" type="Script" id=5]
+[ext_resource path="res://scenes/objects/obj_bed.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sprites/tiles/tileset_nightmare.tres" type="TileSet" id=7]
+[ext_resource path="res://scripts/level/gate.gd" type="Script" id=8]
+[ext_resource path="res://scripts/story/chapter.gd" type="Script" id=9]
+[ext_resource path="res://scripts/level/teleport.gd" type="Script" id=10]
+[ext_resource path="res://scripts/level/music_player.gd" type="Script" id=11]
+[ext_resource path="res://scripts/level/fade.gd" type="Script" id=12]
+
+[node name="Lobby" type="Node2D"]
+position = Vector2( 0, -2 )
+
+[node name="Room01" type="Node2D" parent="."]
+
+[node name="Floor" type="TileMap" parent="Room01"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0 )
+
+[node name="Walls" type="TileMap" parent="Room01"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 65536, 44, 0, 65537, 45, 0, 65538, 45, 0, 65539, 45, 0, 65540, 46, 0, 131072, 50, 0, 131073, 51, 0, 131074, 51, 0, 131075, 51, 0, 131076, 47, 0, 196608, 54, 0, 196609, 52, 0, 196610, 52, 0, 196611, 52, 0, 196612, 53, 0, 262144, 23, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 22, 0, 327680, 23, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 22, 0, 393216, 23, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 22, 0, 458752, 24, 0, 458753, 25, 0, 458754, 25, 0, 458755, 25, 0, 458756, 26, 0 )
+
+[node name="Decor" type="TileMap" parent="Room01"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 65539, 5, 0, 131073, 56, 0 )
+
+[node name="Camera" type="Camera2D" parent="Room01"]
+position = Vector2( 99, 149 )
+current = true
+
+[node name="DoorBackward" parent="Room01" instance=ExtResource( 4 )]
+position = Vector2( 112, 69 )
+linked_door_path = NodePath("../../Hall01/Door01")
+locked_prompt = "DOOR_COMPLETE_1_PROMPT"
+
+[node name="Room02" type="Node2D" parent="."]
+position = Vector2( 773, -20 )
+
+[node name="Floor" type="TileMap" parent="Room02"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0 )
+
+[node name="Walls" type="TileMap" parent="Room02"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 65536, 44, 0, 65537, 45, 0, 65538, 45, 0, 65539, 45, 0, 65540, 37, 0, 131072, 50, 0, 131073, 51, 0, 131074, 51, 0, 131075, 51, 0, 131076, 42, 0, 131077, 45, 0, 131078, 37, 0, 196608, 54, 0, 196609, 52, 0, 196610, 52, 0, 196611, 52, 0, 196612, 43, 0, 196613, 51, 0, 196614, 42, 0, 262144, 23, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262149, 52, 0, 262150, 43, 0, 327680, 23, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327686, 31, 0, 393216, 24, 0, 393217, 25, 0, 393218, 25, 0, 393219, 25, 0, 393220, 25, 0, 393221, 25, 0, 393222, 26, 0 )
+
+[node name="Decor" type="TileMap" parent="Room02"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 131073, 55, 0, 196613, 63, 0, 196614, 8, 0 )
+
+[node name="Camera" type="Camera2D" parent="Room02"]
+position = Vector2( 99, 149 )
+
+[node name="DoorSide" parent="Room02" instance=ExtResource( 3 )]
+position = Vector2( 218, 152 )
+locked = false
+linked_door_path = NodePath("../../Hall01/Door02")
+
+[node name="Tp02" type="Node2D" parent="Room02"]
+position = Vector2( 46, 158 )
+script = ExtResource( 10 )
+node_to_tp_path = NodePath("../../YSort/Player")
+
+[node name="Hall01" type="Node2D" parent="."]
+position = Vector2( 609, 318 )
+
+[node name="Floor" type="TileMap" parent="Hall01"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 720911, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 786446, 0, 0, 786447, 0, 0, 851979, 0, 0, 851980, 0, 0, 851981, 0, 0, 851982, 0, 0, 851983, 0, 0 )
+
+[node name="Walls" type="TileMap" parent="Hall01"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 65536, 44, 0, 65537, 45, 0, 65538, 45, 0, 65539, 45, 0, 65540, 45, 0, 65541, 45, 0, 65542, 45, 0, 65543, 45, 0, 65544, 45, 0, 65545, 45, 0, 65546, 45, 0, 65547, 45, 0, 65548, 45, 0, 65549, 45, 0, 65550, 45, 0, 65551, 46, 0, 131072, 50, 0, 131073, 51, 0, 131074, 51, 0, 131075, 51, 0, 131076, 51, 0, 131077, 51, 0, 131078, 51, 0, 131079, 51, 0, 131080, 51, 0, 131081, 51, 0, 131082, 51, 0, 131083, 51, 0, 131084, 51, 0, 131085, 51, 0, 131086, 51, 0, 131087, 47, 0, 196608, 54, 0, 196609, 52, 0, 196610, 52, 0, 196611, 52, 0, 196612, 52, 0, 196613, 52, 0, 196614, 52, 0, 196615, 52, 0, 196616, 52, 0, 196617, 52, 0, 196618, 52, 0, 196619, 52, 0, 196620, 52, 0, 196621, 52, 0, 196622, 52, 0, 196623, 53, 0, 262144, 23, 0, 262145, 0, 0, 262159, 22, 0, 327680, 23, 0, 327695, 22, 0, 393216, 24, 0, 393217, 25, 0, 393218, 25, 0, 393219, 25, 0, 393220, 25, 0, 393221, 25, 0, 393222, 25, 0, 393223, 25, 0, 393224, 25, 0, 393225, 25, 0, 393226, 18, 0, 393231, 22, 0, 458762, 22, 0, 458763, 30, 0, 458767, 22, 0, 524298, 22, 0, 524299, 30, 0, 524303, 22, 0, 589834, 22, 0, 589835, 30, 0, 589839, 22, 0, 655370, 22, 0, 655371, 30, 0, 655375, 22, 0, 720906, 22, 0, 720907, 30, 0, 720911, 22, 0, 786442, 22, 0, 786443, 30, 0, 786447, 22, 0, 851978, 31, 0, 851979, 32, 0, 851980, 25, 0, 851981, 25, 0, 851982, 25, 0, 851983, 26, 0 )
+
+[node name="Decor" type="TileMap" parent="Hall01"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 65549, 5, 0, 131073, 56, 0, 131077, 63, 0, 131081, 56, 0, 131086, 55, 0, 196608, 7, 0, 655375, 8, 0 )
+
+[node name="Line01" type="Line2D" parent="Hall01"]
+visible = false
+points = PoolVector2Array( 431, 112, 431, 160, 7, 160 )
+width = 4.0
+default_color = Color( 0.945098, 1, 0, 1 )
+
+[node name="Line02" type="Line2D" parent="Hall01"]
+visible = false
+points = PoolVector2Array( 505, 373, 431, 373, 431, 160, 7, 160 )
+width = 4.0
+default_color = Color( 0.945098, 1, 0, 1 )
+
+[node name="Door02" parent="Hall01" instance=ExtResource( 3 )]
+position = Vector2( 6, 152 )
+locked = false
+linked_door_path = NodePath("../../Room02/DoorSide")
+
+[node name="DoorExit" parent="Hall01" instance=ExtResource( 3 )]
+position = Vector2( 506, 375 )
+linked_door_path = NodePath("../../Hall02/Door02")
+locked_prompt = "DOOR_COMPLETE_1_PROMPT"
+
+[node name="Door01" parent="Hall01" instance=ExtResource( 4 )]
+position = Vector2( 432, 69 )
+locked = false
+linked_door_path = NodePath("../../Room01/DoorBackward")
+
+[node name="Camera" type="Camera2D" parent="Hall01"]
+position = Vector2( 105, 163 )
+limit_left = 609
+limit_top = 348
+limit_right = 1121
+limit_bottom = 764
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 7.0
+script = ExtResource( 5 )
+node_to_follow_path = NodePath("../../YSort/Player")
+
+[node name="Hall02" type="Node2D" parent="."]
+position = Vector2( 1433, 318 )
+
+[node name="Floor" type="TileMap" parent="Hall02"]
+modulate = Color( 0.74902, 0.572549, 0.572549, 1 )
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 720911, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 786446, 0, 0, 786447, 0, 0, 851979, 0, 0, 851980, 0, 0, 851981, 0, 0, 851982, 0, 0, 851983, 0, 0 )
+
+[node name="Walls" type="TileMap" parent="Hall02"]
+modulate = Color( 0.458824, 0.419608, 0.396078, 1 )
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 32, 32 )
+show_collision = true
+format = 1
+tile_data = PoolIntArray( 65536, 44, 0, 65537, 45, 0, 65538, 45, 0, 65539, 45, 0, 65540, 45, 0, 65541, 45, 0, 65542, 45, 0, 65543, 45, 0, 65544, 45, 0, 65545, 45, 0, 65546, 45, 0, 65547, 45, 0, 65548, 45, 0, 65549, 45, 0, 65550, 45, 0, 65551, 46, 0, 131072, 50, 0, 131073, 51, 0, 131074, 51, 0, 131075, 51, 0, 131076, 51, 0, 131077, 51, 0, 131078, 51, 0, 131079, 51, 0, 131080, 51, 0, 131081, 51, 0, 131082, 51, 0, 131083, 51, 0, 131084, 51, 0, 131085, 51, 0, 131086, 51, 0, 131087, 47, 0, 196608, 54, 0, 196609, 52, 0, 196610, 52, 0, 196611, 52, 0, 196612, 52, 0, 196613, 52, 0, 196614, 52, 0, 196615, 52, 0, 196616, 52, 0, 196617, 52, 0, 196618, 52, 0, 196619, 52, 0, 196620, 52, 0, 196621, 52, 0, 196622, 52, 0, 196623, 53, 0, 262144, 23, 0, 262159, 22, 0, 327680, 23, 0, 327695, 22, 0, 393216, 24, 0, 393217, 25, 0, 393218, 25, 0, 393219, 25, 0, 393220, 25, 0, 393221, 25, 0, 393222, 25, 0, 393223, 25, 0, 393224, 25, 0, 393225, 25, 0, 393226, 18, 0, 393231, 22, 0, 458762, 22, 0, 458763, 23, 0, 458767, 22, 0, 524298, 22, 0, 524299, 23, 0, 524303, 22, 0, 589834, 22, 0, 589835, 23, 0, 589839, 22, 0, 655370, 22, 0, 655371, 23, 0, 655375, 22, 0, 720906, 22, 0, 720907, 23, 0, 720911, 22, 0, 786442, 22, 0, 786443, 23, 0, 786447, 22, 0, 851978, 31, 0, 851979, 32, 0, 851980, 25, 0, 851981, 25, 0, 851982, 25, 0, 851983, 26, 0 )
+
+[node name="Decor" type="TileMap" parent="Hall02"]
+modulate = Color( 0.815686, 0.501961, 0.501961, 1 )
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+show_collision = true
+format = 1
+tile_data = PoolIntArray( 65538, 5, 0, 65541, 5, 0, 65545, 5, 0, 65549, 5, 0, 131073, 63, 0, 131075, 56, 0, 131079, 56, 0, 131083, 56, 0, 131086, 63, 0, 196608, 7, 0, 655375, 8, 0 )
+
+[node name="Door02" parent="Hall02" instance=ExtResource( 3 )]
+position = Vector2( 6, 152 )
+locked = false
+linked_door_path = NodePath("../Door01")
+locked_prompt = "DOOR_CURSE_PROMPT"
+
+[node name="DoorExit" parent="Hall02" instance=ExtResource( 4 )]
+position = Vector2( 432, 69 )
+linked_door_path = NodePath("../../HallFinal/Door01")
+locked_prompt = "DOOR_CURSE_PROMPT"
+
+[node name="Door03" parent="Hall02" instance=ExtResource( 4 )]
+position = Vector2( 304, 69 )
+locked = false
+linked_door_path = NodePath("../Door02")
+locked_prompt = "DOOR_CURSE_PROMPT"
+
+[node name="Door04" parent="Hall02" instance=ExtResource( 4 )]
+position = Vector2( 176, 69 )
+linked_door_path = NodePath("../Door02")
+locked_prompt = "DOOR_CURSE_PROMPT"
+
+[node name="Door05" parent="Hall02" instance=ExtResource( 4 )]
+position = Vector2( 80, 69 )
+locked = false
+linked_door_path = NodePath("../Door04")
+locked_prompt = "DOOR_CURSE_PROMPT"
+
+[node name="Door01" parent="Hall02" instance=ExtResource( 3 )]
+position = Vector2( 507, 376 )
+locked_prompt = "DOOR_CURSE_PROMPT"
+
+[node name="Camera" type="Camera2D" parent="Hall02"]
+position = Vector2( 105, 163 )
+limit_left = 1433
+limit_top = 348
+limit_right = 1945
+limit_bottom = 764
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 7.0
+script = ExtResource( 5 )
+node_to_follow_path = NodePath("../../YSort/Player")
+
+[node name="Line2D" type="Line2D" parent="Hall02"]
+points = PoolVector2Array( 7, 160, 420, 160, 420, 385, 505, 385 )
+default_color = Color( 0.156863, 0.298039, 1, 1 )
+
+[node name="Line2D2" type="Line2D" parent="Hall02"]
+points = PoolVector2Array( 78, 112, 78, 144, 177, 144, 177, 112 )
+width = 5.0
+default_color = Color( 1, 0.843137, 0, 1 )
+
+[node name="Line2D3" type="Line2D" parent="Hall02"]
+position = Vector2( 127, 0 )
+points = PoolVector2Array( -120, 167, 177, 167, 177, 112 )
+width = 5.0
+default_color = Color( 0.501961, 0, 0, 1 )
+
+[node name="ExitLine" type="Line2D" parent="Hall02"]
+visible = false
+position = Vector2( 191, 0 )
+points = PoolVector2Array( 228, 112, 228, 127, 254, 127, 254, 112 )
+width = 5.0
+default_color = Color( 0.85098, 0, 1, 1 )
+
+[node name="DoorsGate" type="Node" parent="Hall02"]
+script = ExtResource( 8 )
+
+[node name="UnlockTimer" type="Timer" parent="Hall02"]
+wait_time = 2.0
+one_shot = true
+
+[node name="HallFinal" type="Node2D" parent="."]
+position = Vector2( 2100, 318 )
+
+[node name="Floor" type="TileMap" parent="HallFinal"]
+modulate = Color( 0.564706, 0.45098, 0.45098, 1 )
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 262144, 0, 0, 262145, 1, 0, 262146, 1, 0, 262147, 0, 0, 262148, 3, 0, 262149, 3, 0, 262150, 3, 0, 262151, 3, 0, 262152, 4, 0, 262153, 0, 0, 262154, 1, 0, 262155, 0, 0, 262156, 2, 0, 262157, 1, 0, 262158, 2, 0, 262159, 0, 0, 327680, 0, 0, 327681, 1, 0, 327682, 1, 0, 327683, 0, 0, 327684, 4, 0, 327685, 4, 0, 327686, 4, 0, 327687, 4, 0, 327688, 4, 0, 327689, 0, 0, 327690, 0, 0, 327691, 1, 0, 327692, 2, 0, 327693, 2, 0, 327694, 2, 0, 327695, 0, 0, 393216, 2, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 1, 0, 393228, 1, 0, 393229, 1, 0, 393230, 0, 0, 393231, 0, 0, 458763, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 0, 0, 458767, 0, 0, 458775, 3, 0, 524299, 1, 0, 524300, 1, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 589835, 1, 0, 589836, 4, 0, 589837, 3, 0, 589838, 4, 0, 589839, 0, 0, 655371, 0, 0, 655372, 2, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 720907, 0, 0, 720908, 2, 0, 720909, 2, 0, 720910, 2, 0, 720911, 2, 0, 786443, 0, 0, 786444, 2, 0, 786445, 2, 0, 786446, 2, 0, 786447, 0, 0, 851979, 0, 0, 851980, 0, 0, 851981, 2, 0, 851982, 2, 0, 851983, 0, 0 )
+
+[node name="Walls" type="TileMap" parent="HallFinal"]
+modulate = Color( 0.752941, 0.466667, 0.466667, 1 )
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 32, 32 )
+show_collision = true
+format = 1
+tile_data = PoolIntArray( 65536, 44, 0, 65537, 45, 0, 65538, 45, 0, 65539, 45, 0, 65540, 45, 0, 65541, 45, 0, 65542, 45, 0, 65543, 45, 0, 65544, 45, 0, 65545, 45, 0, 65546, 45, 0, 65547, 45, 0, 65548, 45, 0, 65549, 45, 0, 65550, 45, 0, 65551, 46, 0, 131072, 50, 0, 131073, 51, 0, 131074, 51, 0, 131075, 51, 0, 131076, 51, 0, 131077, 51, 0, 131078, 51, 0, 131079, 51, 0, 131080, 51, 0, 131081, 51, 0, 131082, 51, 0, 131083, 51, 0, 131084, 51, 0, 131085, 51, 0, 131086, 51, 0, 131087, 47, 0, 196608, 54, 0, 196609, 52, 0, 196610, 52, 0, 196611, 52, 0, 196612, 52, 0, 196613, 52, 0, 196614, 52, 0, 196615, 52, 0, 196616, 52, 0, 196617, 52, 0, 196618, 52, 0, 196619, 52, 0, 196620, 52, 0, 196621, 52, 0, 196622, 52, 0, 196623, 53, 0, 262144, 23, 0, 262159, 22, 0, 327680, 23, 0, 327695, 22, 0, 393216, 24, 0, 393217, 25, 0, 393218, 25, 0, 393219, 25, 0, 393220, 25, 0, 393221, 25, 0, 393222, 25, 0, 393223, 25, 0, 393224, 25, 0, 393225, 25, 0, 393226, 18, 0, 393231, 22, 0, 458762, 22, 0, 458763, 23, 0, 458767, 22, 0, 524298, 22, 0, 524299, 23, 0, 524303, 22, 0, 589834, 22, 0, 589835, 23, 0, 589839, 22, 0, 655370, 22, 0, 655371, 23, 0, 655375, 22, 0, 720906, 22, 0, 720907, 23, 0, 720911, 22, 0, 786442, 22, 0, 786443, 23, 0, 786447, 22, 0, 851978, 31, 0, 851979, 32, 0, 851980, 25, 0, 851981, 25, 0, 851982, 25, 0, 851983, 26, 0 )
+
+[node name="Decor" type="TileMap" parent="HallFinal"]
+modulate = Color( 0.564706, 0.337255, 0.337255, 1 )
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 65549, 5, 0, 131073, 55, 0, 131077, 56, 0, 131081, 55, 0, 131086, 56, 0, 196608, 7, 0, 655375, 8, 0 )
+
+[node name="Door01" parent="HallFinal" instance=ExtResource( 4 )]
+position = Vector2( 432, 69 )
+locked = false
+linked_door_path = NodePath("../DoorExit")
+locked_prompt = "DOOR_CURSE_PROMPT"
+
+[node name="DoorExit" parent="HallFinal" instance=ExtResource( 3 )]
+position = Vector2( 507, 376 )
+locked = false
+linked_door_path = NodePath("../Door01")
+locked_prompt = "DOOR_CURSED_PROMPT"
+
+[node name="Camera" type="Camera2D" parent="HallFinal"]
+position = Vector2( 105, 163 )
+limit_left = 2100
+limit_top = 348
+limit_right = 2612
+limit_bottom = 764
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 2.0
+script = ExtResource( 5 )
+node_to_follow_path = NodePath("../../YSort/Player")
+
+[node name="UnlockTimer" type="Timer" parent="HallFinal"]
+wait_time = 2.0
+one_shot = true
+
+[node name="YSort" type="YSort" parent="."]
+position = Vector2( 854, 137 )
+
+[node name="Bed01" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( -829, -20 )
+level = "level_01"
+prompt = "BED_SLEEP_PROMPT"
+
+[node name="Bed02" parent="YSort" instance=ExtResource( 6 )]
+level = "level_02"
+prompt = "BED_SLEEP_PROMPT"
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( -788, 29 )
+
+[node name="FinalBed" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 1394, 340 )
+level = "level_03"
+prompt = "BED_DIE_PROMPT"
+
+[node name="Sprite" parent="YSort/FinalBed" index="0"]
+frame = 1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.933333, 0.823529, 0.572549, 1 )
+
+[node name="Chapter" type="Node" parent="."]
+script = ExtResource( 9 )
+
+[node name="MusicPlayer" type="Node" parent="."]
+script = ExtResource( 11 )
+
+[node name="Fade" type="Node" parent="."]
+script = ExtResource( 12 )
+
+[connection signal="passed" from="Room01/DoorBackward" to="Room01/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="Room02/DoorSide" to="Room02/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="Hall01/Door02" to="Hall01/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="Hall01/DoorExit" to="Hall01/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="Hall01/Door01" to="Hall01/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="Hall02/Door02" to="Hall02/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="Hall02/Door02" to="MusicPlayer" method="play_music" flags=6 binds= [ "mus_lobby_distorted1.ogg" ]]
+[connection signal="passed" from="Hall02/DoorExit" to="Hall02/Camera" method="set" binds= [ "current", true ]]
+[connection signal="opened" from="Hall02/Door03" to="Hall02/Line2D3" method="set" binds= [ "visible", false ]]
+[connection signal="opened" from="Hall02/Door03" to="Hall02/DoorsGate" method="add" flags=6]
+[connection signal="passed" from="Hall02/Door03" to="Hall02/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="Hall02/Door04" to="Hall02/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="Hall02/Door04" to="Hall02/Line2D2" method="set" binds= [ "visible", false ]]
+[connection signal="passed" from="Hall02/Door04" to="Hall02/DoorsGate" method="add" flags=6]
+[connection signal="passed" from="Hall02/Door05" to="Hall02/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="Hall02/Door01" to="Hall02/Line2D" method="set" binds= [ "visible", false ]]
+[connection signal="passed" from="Hall02/Door01" to="Hall02/DoorsGate" method="add" flags=6]
+[connection signal="opened" from="Hall02/DoorsGate" to="Hall02/UnlockTimer" method="start" flags=6]
+[connection signal="timeout" from="Hall02/UnlockTimer" to="Hall02/DoorExit" method="unlock" flags=6]
+[connection signal="timeout" from="Hall02/UnlockTimer" to="Hall02/ExitLine" method="set" flags=6 binds= [ "visible", true ]]
+[connection signal="passed" from="HallFinal/Door01" to="HallFinal/Camera" method="set" binds= [ "current", true ]]
+[connection signal="passed" from="HallFinal/Door01" to="MusicPlayer" method="play_music" flags=6 binds= [ "mus_lobby_distorted2.ogg" ]]
+[connection signal="timeout" from="HallFinal/UnlockTimer" to="HallFinal/Door01" method="unlock" flags=6]
+[connection signal="lied" from="YSort/Bed01" to="MusicPlayer" method="stop_music" flags=6 binds= [ 1.0 ]]
+[connection signal="lied" from="YSort/Bed02" to="MusicPlayer" method="stop_music" flags=6 binds= [ 2.0 ]]
+[connection signal="lied" from="YSort/FinalBed" to="MusicPlayer" method="stop_music" flags=6 binds= [ 2.0 ]]
+[connection signal="chapter_1" from="Chapter" to="MusicPlayer" method="play_music" flags=6 binds= [ "mus_beginning.ogg" ]]
+[connection signal="chapter_1" from="Chapter" to="Fade" method="start_fade" flags=6]
+[connection signal="chapter_2" from="Chapter" to="Room01/DoorBackward" method="unlock"]
+[connection signal="chapter_2" from="Chapter" to="Hall01/Line01" method="set" binds= [ "visible", true ]]
+[connection signal="chapter_2" from="Chapter" to="YSort/Bed01" method="set" flags=6 binds= [ "enabled", false ]]
+[connection signal="chapter_2" from="Chapter" to="MusicPlayer" method="play_music" flags=6 binds= [ "mus_lobby_normal.ogg" ]]
+[connection signal="chapter_3" from="Chapter" to="Room01/DoorBackward" method="unlock"]
+[connection signal="chapter_3" from="Chapter" to="Room02/Camera" method="set" binds= [ "current", true ]]
+[connection signal="chapter_3" from="Chapter" to="Room02/Tp02" method="teleport"]
+[connection signal="chapter_3" from="Chapter" to="Hall01/Line02" method="set" binds= [ "visible", true ]]
+[connection signal="chapter_3" from="Chapter" to="Hall01/DoorExit" method="unlock"]
+[connection signal="chapter_3" from="Chapter" to="YSort/Bed01" method="set" flags=6 binds= [ "enabled", false ]]
+[connection signal="chapter_3" from="Chapter" to="YSort/Bed02" method="set" flags=6 binds= [ "enabled", false ]]
+[connection signal="chapter_3" from="Chapter" to="MusicPlayer" method="play_music" flags=6 binds= [ "mus_lobby_normal.ogg" ]]
+
+[editable path="YSort/FinalBed"]

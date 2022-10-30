@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/snd_rare_level01_laugh.ogg-4153d055839308c28704bea644f0221c.oggstr"
+
+[deps]
+
+source_file="res://sounds/snd_rare_level01_laugh.ogg"
+dest_files=[ "res://.import/snd_rare_level01_laugh.ogg-4153d055839308c28704bea644f0221c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

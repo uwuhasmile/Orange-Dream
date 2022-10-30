@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/snd_scare_screams.ogg-4411510729b7a6cc8e64158dfa9a5f0b.oggstr"
+
+[deps]
+
+source_file="res://sounds/snd_scare_screams.ogg"
+dest_files=[ "res://.import/snd_scare_screams.ogg-4411510729b7a6cc8e64158dfa9a5f0b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
