@@ -186,7 +186,7 @@ window/size/test_width=1280
 window/size/test_height=720
 mouse_cursor/custom_image="res://sprites/ui/spr_cursor.png"
 window/stretch/mode="viewport"
-window/stretch/aspect="keep"
+window/stretch/aspect="expand"
 
 [global]
 
