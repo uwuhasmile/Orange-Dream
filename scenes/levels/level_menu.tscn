@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/level/audio_settings.gd" type="Script" id=1]
 [ext_resource path="res://resources/themes/theme_main.tres" type="Theme" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scripts/level/level_script.gd" type="Script" id=6]
 [ext_resource path="res://scripts/level/fade.gd" type="Script" id=7]
 [ext_resource path="res://scripts/story/chapter.gd" type="Script" id=8]
+[ext_resource path="res://scripts/level/language_settings.gd" type="Script" id=9]
 
 [node name="LevelMenu" type="Control"]
 anchor_right = 1.0
@@ -41,23 +42,23 @@ margin_bottom = 0.0999756
 
 [node name="BtnNewGame" type="Button" parent="VBoxContainer"]
 margin_right = 145.0
-margin_bottom = 28.0
+margin_bottom = 20.0
 focus_mode = 0
 size_flags_vertical = 3
 text = "UI_BTN_NEWGAME"
 
 [node name="BtnQuit" type="Button" parent="VBoxContainer"]
-margin_top = 32.0
+margin_top = 24.0
 margin_right = 145.0
-margin_bottom = 61.0
+margin_bottom = 44.0
 focus_mode = 0
 size_flags_vertical = 3
 text = "UI_BTN_QUIT"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 65.0
+margin_top = 48.0
 margin_right = 145.0
-margin_bottom = 85.0
+margin_bottom = 68.0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
 margin_right = 78.0
@@ -76,9 +77,9 @@ max_value = 0.0
 rounded = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 89.0
+margin_top = 72.0
 margin_right = 145.0
-margin_bottom = 109.0
+margin_bottom = 92.0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
 margin_right = 70.0
@@ -95,6 +96,17 @@ size_flags_horizontal = 3
 min_value = -72.0
 max_value = 0.0
 rounded = true
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer"]
+margin_top = 96.0
+margin_right = 145.0
+margin_bottom = 116.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "ENGLISH"
+align = 1
+items = [ "ENGLISH", null, false, 0, null, "УКРАЇНСЬКА", null, false, 1, null ]
+selected = 0
 
 [node name="ButtonHover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
@@ -116,6 +128,9 @@ one_shot = true
 [node name="Chapter" type="Node" parent="."]
 script = ExtResource( 8 )
 
+[node name="LanguageSettings" type="Node" parent="."]
+script = ExtResource( 9 )
+
 [connection signal="ready" from="." to="Fade" method="start_fade" flags=6 binds= [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ), 0.5 ]]
 [connection signal="mouse_entered" from="VBoxContainer/BtnNewGame" to="ButtonHover" method="play"]
 [connection signal="pressed" from="VBoxContainer/BtnNewGame" to="ButtonPress" method="play"]
@@ -131,6 +146,8 @@ script = ExtResource( 8 )
 [connection signal="drag_started" from="VBoxContainer/HBoxContainer2/HSlider" to="ButtonPress" method="play"]
 [connection signal="mouse_entered" from="VBoxContainer/HBoxContainer2/HSlider" to="ButtonHover" method="play"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer2/HSlider" to="AudioSettings" method="set_music"]
+[connection signal="item_selected" from="VBoxContainer/OptionButton" to="LanguageSettings" method="change_language"]
 [connection signal="ready_music" from="AudioSettings" to="VBoxContainer/HBoxContainer2/HSlider" method="set_value"]
 [connection signal="ready_sounds" from="AudioSettings" to="VBoxContainer/HBoxContainer/HSlider" method="set_value"]
 [connection signal="timeout" from="Timer" to="LevelScript" method="go_to_level" flags=6 binds= [ "level_lobby" ]]
+[connection signal="ready_language" from="LanguageSettings" to="VBoxContainer/OptionButton" method="select"]

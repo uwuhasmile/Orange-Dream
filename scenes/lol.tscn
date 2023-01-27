@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/tiles/tileset_nightmare.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/objects/obj_player_nightmare.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 131076, 63, 0, 131077, 30, 0, 131078, 30, 0, 131079, 30, 0, 131080, 30, 0, 131081, 63, 0, 196612, 63, 0, 196613, 4, 0, 196614, 0, 0, 196615, 0, 0, 196616, 4, 0, 196617, 63, 0, 262148, 63, 0, 262149, 0, 0, 262150, 63, 0, 262151, 63, 0, 262152, 0, 0, 262153, 63, 0, 327684, 63, 0, 327685, 0, 0, 327688, 0, 0, 327689, 63, 0, 393220, 63, 0, 393221, 4, 0, 393222, 0, 0, 393223, 0, 0, 393224, 4, 0, 393225, 63, 0, 458756, 63, 0, 458757, 63, 0, 458758, 63, 0, 458759, 63, 0, 458760, 63, 0, 458761, 63, 0 )
+
+[node name="Player" parent="TileMap" instance=ExtResource( 2 )]
+position = Vector2( 181, 149 )
+
+[node name="Camera2D" type="Camera2D" parent="TileMap"]
+position = Vector2( 223, 162 )
+current = true

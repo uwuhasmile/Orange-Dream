@@ -280,6 +280,7 @@ bus = "Sound"
 [connection signal="showed_final" from="." to="Esc" method="set" binds= [ "enabled", true ]]
 [connection signal="showed_final" from="." to="Solved" method="emit"]
 [connection signal="started_hide" from="." to="Esc" method="set" binds= [ "enabled", false ]]
+[connection signal="activated" from="Closed/Buttons/Code" to="." method="solve" flags=6]
 [connection signal="activated" from="Closed/Buttons/Code" to="AnimationPlayer" method="play" flags=6 binds= [ "solved" ]]
 [connection signal="activated" from="Closed/Buttons/Code" to="UnlockSound" method="play" flags=6]
 [connection signal="failed" from="Closed/Buttons/Code" to="UnlockSound" method="play"]

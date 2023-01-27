@@ -255,12 +255,12 @@ collision_mask = 5
 [node name="Chapter" type="Node" parent="."]
 script = ExtResource( 16 )
 
-[connection signal="user_event_1" from="Hall/Alphabet" to="YSort/Player" method="add_item_to_inventory" binds= [ "red_key" ]]
 [connection signal="passed" from="Hall/DoorLeft" to="Hall/Camera" method="set" binds= [ "current", true ]]
 [connection signal="passed" from="Hall/DoorRight" to="Hall/Camera" method="set" binds= [ "current", true ]]
 [connection signal="passed" from="Hall/ExitDoor" to="Hall/Camera" method="set" binds= [ "current", true ]]
 [connection signal="passed" from="RoomLeft/Door" to="RoomLeft/Camera" method="set" binds= [ "current", true ]]
 [connection signal="passed" from="RoomRight/Door" to="RoomRight/Camera" method="set" binds= [ "current", true ]]
+[connection signal="solved" from="RoomRight/Safe" to="Hall/Alphabet" method="call_user_event_1" flags=6]
 [connection signal="user_event_1" from="RoomRight/Safe" to="YSort/Player" method="add_item_to_inventory" flags=6 binds= [ "red_key" ]]
 [connection signal="trigger_entered" from="RoomRight/WhisperTrigger" to="RoomRight/WhisperTrigger/Chance" method="emit" flags=6]
 [connection signal="called" from="RoomRight/WhisperTrigger/Chance" to="RoomRight/WhisperTrigger/Whisper" method="play" flags=6]

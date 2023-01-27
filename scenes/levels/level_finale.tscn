@@ -21,7 +21,7 @@ tracks/0/keys = {
 }
 
 [node name="LevelFinale" type="Control"]
-modulate = Color( 0.888889, 0.888889, 0.888889, 1 )
+modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
@@ -51,8 +51,7 @@ margin_left = 0.0399933
 margin_top = 0.0599976
 margin_right = -0.0400085
 margin_bottom = 0.130005
-text = "Made by Arfilish
-For alexmile game jam 2022"
+text = "Made by Arfilish"
 align = 1
 
 [node name="LevelScript" type="Node" parent="."]

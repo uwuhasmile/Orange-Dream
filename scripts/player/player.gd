@@ -114,3 +114,7 @@ func hide_screen() -> void:
 	$HUDLayer.remove_child(current_screen);
 	current_screen = null;
 	input_enabled = true;
+
+
+func free():
+	pass # Replace with function body.

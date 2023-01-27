@@ -80,6 +80,11 @@ _global_script_classes=[ {
 "path": "res://scripts/level/input_action.gd"
 }, {
 "base": "Node",
+"class": "LanguageSettings",
+"language": "GDScript",
+"path": "res://scripts/level/language_settings.gd"
+}, {
+"base": "Node",
 "class": "LevelScript",
 "language": "GDScript",
 "path": "res://scripts/level/level_script.gd"
@@ -144,6 +149,7 @@ _global_script_class_icons={
 "Gate": "",
 "HUD": "",
 "InputAction": "",
+"LanguageSettings": "",
 "LevelScript": "",
 "MusicPlayer": "",
 "Note": "",
@@ -185,6 +191,7 @@ window/stretch/aspect="keep"
 [global]
 
 default_chapter=1
+lang=false
 
 [gui]
 
@@ -241,10 +248,11 @@ interact={
 
 [locale]
 
-translations=PoolStringArray( "res://localization/loc_prompts.en.translation", "res://localization/loc_prompts.ru.translation", "res://localization/loc_prompts.uk.translation", "res://localization/loc_narrative.en.translation", "res://localization/loc_narrative.ru.translation", "res://localization/loc_narrative.uk.translation", "res://localization/loc_ui.en.translation", "res://localization/loc_ui.ru.translation", "res://localization/loc_ui.uk.translation" )
+translations=PoolStringArray( "res://localization/loc_prompts.en.translation", "res://localization/loc_prompts.uk.translation", "res://localization/loc_narrative.en.translation", "res://localization/loc_narrative.uk.translation", "res://localization/loc_ui.en.translation", "res://localization/loc_ui.uk.translation" )
 translation_remaps={
-"res://sprites/puzzles/spr_level02_caesar_hint.png": PoolStringArray( "res://sprites/puzzles/uk/spr_level02_caesar_hint.png:uk", "res://sprites/puzzles/ru/spr_level02_caesar_hint.png:ru" )
+"res://sprites/puzzles/spr_level02_caesar_hint.png": PoolStringArray( "res://sprites/puzzles/uk/spr_level02_caesar_hint.png:uk" )
 }
+locale_filter=[ 0, [ "en", "uk" ] ]
 
 [physics]
 

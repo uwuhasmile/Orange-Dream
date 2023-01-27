@@ -1,7 +1,6 @@
 extends Control
 class_name ShowableScreen
 
-
 var showed: bool = false;
 
 var fade_tween;

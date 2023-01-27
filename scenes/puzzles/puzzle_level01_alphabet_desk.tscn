@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/gameplay/showable_screen.gd" type="Script" id=1]
 [ext_resource path="res://scripts/level/input_action.gd" type="Script" id=2]
 [ext_resource path="res://sprites/puzzles/spr_level01_alphabet_desk.png" type="Texture" id=3]
 [ext_resource path="res://resources/themes/theme_main.tres" type="Theme" id=4]
+[ext_resource path="res://scripts/level/conditional_event.gd" type="Script" id=5]
 [ext_resource path="res://scripts/story/note.gd" type="Script" id=8]
 
 [node name="PuzzleLevel01CodeTable" type="Control"]
@@ -33,15 +34,29 @@ mouse_filter = 2
 input_pass_on_modal_close_click = false
 color = Color( 0, 0, 0, 1 )
 
-[node name="Text2" type="Node" parent="."]
+[node name="TextUnsolved" type="Node" parent="."]
 script = ExtResource( 8 )
 texts = [ "LEVEL1_TEXT_ALPHABET_01", "LEVEL1_TEXT_ALPHABET_02", "LEVEL1_TEXT_ALPHABET_03", "" ]
+
+[node name="TextSolved" type="Node" parent="."]
+script = ExtResource( 8 )
+texts = [ "LEVEL2_TEXT_CAESAR_03", "" ]
 
 [node name="Enter" type="Node" parent="."]
 script = ExtResource( 2 )
 
-[connection signal="showed_final" from="." to="Text2" method="start"]
+[node name="Solved" type="Node" parent="."]
+script = ExtResource( 5 )
+value = false
+
 [connection signal="showed_final" from="." to="Enter" method="set" binds= [ "enabled", true ]]
-[connection signal="changed" from="Text2" to="Text" method="set_text"]
-[connection signal="ended" from="Text2" to="." method="hide_screen"]
-[connection signal="just_pressed" from="Enter" to="Text2" method="next"]
+[connection signal="showed_final" from="." to="Solved" method="emit"]
+[connection signal="user_event_1" from="." to="Solved" method="set" flags=6 binds= [ "value", true ]]
+[connection signal="changed" from="TextUnsolved" to="Text" method="set_text"]
+[connection signal="ended" from="TextUnsolved" to="." method="hide_screen"]
+[connection signal="changed" from="TextSolved" to="Text" method="set_text"]
+[connection signal="ended" from="TextSolved" to="." method="hide_screen"]
+[connection signal="just_pressed" from="Enter" to="TextUnsolved" method="next"]
+[connection signal="just_pressed" from="Enter" to="TextSolved" method="next"]
+[connection signal="no" from="Solved" to="TextUnsolved" method="start"]
+[connection signal="yes" from="Solved" to="TextSolved" method="start"]

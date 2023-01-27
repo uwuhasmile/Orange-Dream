@@ -948,7 +948,7 @@ frame = 1
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 245, 104 )
+position = Vector2( 246, 92 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.847059, 0.843137, 0.713726, 1 )
@@ -966,6 +966,7 @@ script = ExtResource( 31 )
 [connection signal="passed" from="MainHall/DoorRight" to="MainHall/Camera" method="set" binds= [ "current", true ]]
 [connection signal="passed" from="MainHall/DoorFinalKey" to="MainHall/Camera" method="set" binds= [ "current", true ]]
 [connection signal="passed" from="MainHall/DoorFinalKey" to="MainHall/FinalCreepy" method="emit"]
+[connection signal="passed" from="MainHall/DoorExit" to="MainHall/Camera" method="set" binds= [ "current", true ]]
 [connection signal="unlocked" from="MainHall/DoorExit" to="MainHall/FinalCreepy" method="set" flags=6 binds= [ "value", true ]]
 [connection signal="yes" from="MainHall/FinalCreepy" to="MainHall/FinalCreepy/Cutscenes" method="play" flags=6 binds= [ "fnl" ]]
 [connection signal="yes" from="MainHall/FinalCreepy" to="MainHall/FinalCreepy/Continue" method="next"]
