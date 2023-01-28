@@ -25,7 +25,7 @@ DOOR_CODE_LOCKED_PROMPT,Locked by code,Замкнені кодом
 SCREEN_UNLOCK_KEYCODE_PROMPT,Unlock door,Відімкнути двері
 ITEM_RED_KEY_PROMPT,Pick up red key,Підібрати червоний ключ
 ITEM_HAS_RED_KEY_PROMPT,I already have red key,У мене вже є червоний ключ
-ITEM_YELLOW_KEY_PROMPT,Pick up yellow key,Підібрати червоний ключ
+ITEM_YELLOW_KEY_PROMPT,Pick up yellow key,Підібрати жовтий ключ
 ITEM_HAS_YELLOW_KEY_PROMPT,I already have yellow key,У мене вже є жовтий ключ
 DOOR_ITEM_YELLOW_KEY_PROMPT,Locked with yellow key,Замкнені жовтим ключем
 DOOR_HAS_ITEM_YELLOW_KEY_PROMPT,Use yellow key,Використати жовтий ключ

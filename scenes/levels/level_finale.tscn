@@ -21,7 +21,7 @@ tracks/0/keys = {
 }
 
 [node name="LevelFinale" type="Control"]
-modulate = Color( 0, 0, 0, 1 )
+modulate = Color( 0.733333, 0.733333, 0.733333, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )

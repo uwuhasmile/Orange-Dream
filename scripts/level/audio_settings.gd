@@ -13,9 +13,7 @@ func _ready():
 	emit_signal("ready_music", volume_mus);
 
 func set_sound(value: float):
-# warning-ignore:narrowing_conversion
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Sound")), value);
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sound"), value);
 	
 func set_music(value: float):
-# warning-ignore:narrowing_conversion
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")), value);
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), value);
