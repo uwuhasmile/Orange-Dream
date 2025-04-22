@@ -64,7 +64,7 @@ tile_data = PoolIntArray( 65536, 44, 0, 65537, 45, 0, 65538, 45, 0, 65539, 45, 0
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 131073, 55, 0, 196613, 63, 0, 196614, 8, 0 )
+tile_data = PoolIntArray( 131073, 55, 0, 196614, 8, 0 )
 
 [node name="Camera" type="Camera2D" parent="Room02"]
 position = Vector2( 99, 149 )
@@ -98,7 +98,7 @@ tile_data = PoolIntArray( 65536, 44, 0, 65537, 45, 0, 65538, 45, 0, 65539, 45, 0
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 65549, 5, 0, 131073, 56, 0, 131077, 63, 0, 131081, 56, 0, 131086, 55, 0, 196608, 7, 0, 655375, 8, 0 )
+tile_data = PoolIntArray( 65549, 5, 0, 131073, 56, 0, 131081, 56, 0, 131086, 55, 0, 196608, 7, 0, 655375, 8, 0 )
 
 [node name="Line01" type="Line2D" parent="Hall01"]
 visible = false
@@ -163,7 +163,7 @@ tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
 show_collision = true
 format = 1
-tile_data = PoolIntArray( 65538, 5, 0, 65541, 5, 0, 65545, 5, 0, 65549, 5, 0, 131073, 63, 0, 131075, 56, 0, 131079, 56, 0, 131083, 56, 0, 131086, 63, 0, 196608, 7, 0, 655375, 8, 0 )
+tile_data = PoolIntArray( 65538, 5, 0, 65541, 5, 0, 65545, 5, 0, 65549, 5, 0, 131073, 55, 0, 131075, 56, 0, 131079, 56, 0, 131083, 56, 0, 131086, 55, 0, 196608, 7, 0, 655375, 8, 0 )
 
 [node name="Door02" parent="Hall02" instance=ExtResource( 3 )]
 position = Vector2( 6, 152 )

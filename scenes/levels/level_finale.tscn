@@ -51,7 +51,7 @@ margin_left = 0.0399933
 margin_top = 0.0599976
 margin_right = -0.0400085
 margin_bottom = 0.130005
-text = "Made by Arfilish"
+text = "Made by Hasmile"
 align = 1
 
 [node name="LevelScript" type="Node" parent="."]
